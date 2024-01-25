@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.container{
+    max-width: 100%;
+    margin: auto;
+}
+.row{
+    display: flex;
+    flex-wrap: nowrap;
+}
+ul,ol{
+    list-style: none;
+}
+.justify-content{
+    justify-content: space-between;
+}
+.align-items{
+    align-items: center;
+}
+
+//   HEADER SECTION DESIGN CSS
+
+header{
+    .responsiv{
+        position: absolute;
+        right: 0px;
+        top: 40px;
+        nav{
+            ul{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column; 
+            }
+        }
+        .signup-login{
+            button{
+                display: block;
+            }
+        }
+    }
+    
+}
