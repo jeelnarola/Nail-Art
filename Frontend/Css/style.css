@@ -11,7 +11,7 @@
 
 .row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 ul, ol {
@@ -26,16 +26,189 @@ ul, ol {
   align-items: center;
 }
 
-header .responsiv {
-  position: absolute;
-  right: 0px;
-  top: 40px;
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12 {
+  padding: 10px;
 }
-header .responsiv nav ul {
+
+.col-xs-1 {
+  width: 8.333%;
+}
+
+.col-xs-2 {
+  width: 16.666%;
+}
+
+.col-xs-3 {
+  width: 25%;
+}
+
+.col-xs-4 {
+  width: 33.333%;
+}
+
+.col-xs-5 {
+  width: 41.666%;
+}
+
+.col-xs-6 {
+  width: 50%;
+}
+
+.col-xs-7 {
+  width: 58.333%;
+}
+
+.col-xs-8 {
+  width: 66.666%;
+}
+
+.col-xs-9 {
+  width: 75%;
+}
+
+.col-xs-10 {
+  width: 83.333%;
+}
+
+.col-xs-11 {
+  width: 91.666%;
+}
+
+.col-xs-12 {
+  width: 100%;
+}
+
+header {
+  background-color: #FDF5E6;
+}
+header .header-menu {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
-header .responsiv .signup-login button {
+header .header-menu .logo {
+  width: 50px;
+  height: 50px;
+}
+header .header-menu .logo img {
+  width: 80px;
+}
+header .header-menu .nav {
+  position: absolute;
+  top: 50px;
+  right: 500px;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.28);
+  transition: all 0.3s;
+}
+header .header-menu .nav li {
+  padding: 5px;
+}
+header .header-menu .nav .btn button {
   display: block;
+  padding: 10px 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #008CBA;
+  margin: 10px 0px;
+  text-transform: uppercase;
+  color: white;
+}
+header .header-menu .nav .btn button:hover {
+  background-color: #18abdc;
+}
+header .header-menu .active {
+  right: 0px;
+}
+header .header-menu .btn-login {
+  transform: scale(0);
+}
+header .header-menu .menu-icon {
+  font-size: 20px;
+  padding: 10px;
+}
+
+.col-xs-12 .box {
+  border: 2px solid black;
+  width: 100%;
+}
+.col-xs-12 .box .box-grid {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  padding: 20px;
+}
+.col-xs-12 .box .box-grid .bo {
+  border: 2px dotted red;
+  padding: 60px;
+}
+.col-xs-12 .box .box-grid #box-2 {
+  grid-row: 1/4;
+  grid-column: 2/4;
+}
+.col-xs-12 .box .box-grid #box-5 {
+  grid-column: 4/1;
 }/*# sourceMappingURL=style.css.map */

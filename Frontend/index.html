@@ -8,22 +8,56 @@
     <style>
         @import url(Css/all.min.css);
         @import url(Css/style.css);
-        @import url(Css/media.css);  
+        @import url(Css/media.css); 
+        
+        .bo{
+            
+            /* border: 1px solid black; */
+            /* margin: 10px; */
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+        }
+        
+        /* .col-xs-12{
+            padding: 20px;
+        } */
+        /* .box{
+            width: 100%;
+        } */
+        #box-1{
+            width: 114px;
+            height: 150px;
+        }
+        #box-4{
+            width: 114px;
+            height: 144px;   
+        }
+        #box-2{
+            grid-row: 1/4;
+            grid-column: 2/4;
+            height: 300px;
+        }
+        #box-5{
+            grid-column: 4/1;
+            height: 85px;
+        }
     </style>
 </head>
 <body>
 
          <!-- HEADER SECTION HTML -->
 
-    <header>
+    <!-- <header>
         <div class="container">
-            <div class="row justify-content align-items">
+            <div class="class">
                 <div class="logo">
-                    <h1>jeel</h1>
+                    <img src="Image/logo-removebg-preview.png" alt="">
                 </div>
                 <div class="responsiv">
                     <nav>
-                        <ul class="row">
+                        <ul class="">
                             <li>HOME</li>
                             <li>ABOUT US</li>
                             <li>SERVICES</li>
@@ -41,6 +75,100 @@
                 </div>
             </div>
         </div>
+    </header> -->
+
+    <header>
+        <div class="container">
+            <div class="header-menu">
+                <div class="logo">
+                    <img src="Image/logo-removebg-preview.png" alt="">
+                </div>
+                <nav>
+                    <ul class="nav">
+                        <li>HOME</li>
+                        <li>ABOUT US</li>
+                        <li>SERVICES</li>
+                        <li>SHOP</li>
+                        <li>CONTACT US</li>
+                        <div class="btn">
+                            <button>Signup</button>
+                            <button>Login</button>
+                        </div>
+                    </ul>
+                </nav>
+                <div class="btn-login">
+                    <button>Signup</button>
+                    <button>Login</button>
+                </div>
+                <div class="menu-icon">
+                    <i class="fa-solid fa-bars"></i>
+                    <i class="fa-solid fa-xmark" style="display: none;"></i>
+                </div>
+            </div>
+        </div>
     </header>
+
+     <!-- BENNER SECTION HTML -->
+
+     <!-- <section class="benner">
+         <div class="container">
+            <img src="Image/benner.png" alt="">
+            <div class="row">
+                <div class="col">
+                    <div class="conatin">
+                        <h1>Give Your Nails Sweet Treat</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit telles , luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="benner-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section> -->
+
+     <section>
+        <div class="container">
+           <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="box" >
+                    <div class="box-grid">
+                        <div class="bo" id="box-1"></div>
+                        <div class="bo" id="box-2"></div>
+                        <div class="bo" id="box-4"></div>
+                        <div class="bo" id="box-5"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="box" style="border: 1px solid red;">
+                    <p>about Us</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo possimus, nisi in rem ad laudantium tempora doloremque consequuntur quasi similique repudiandae esse voluptas doloribus et.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis magni aliquid beatae illo, eius, tenetur voluptatum corporis voluptates accusantium eligendi earum mollitia odio ab culpa blanditiis officiis adipisci deleniti provident, possimus eaque id numquam tempore. Possimus impedit natus earum laboriosam amet quas quibusdam! Quidem, reiciendis.</p>
+
+                </div>
+            </div>
+           </div>
+        </div>
+     </section>
+
+     <script>
+         let xmark=document.querySelector(".fa-xmark")
+         let menu=document.querySelector(".menu-icon")
+         let btn=document.querySelector(".fa-bars")
+
+         let nav=document.querySelector(".nav")
+        btn.addEventListener("click",(e)=>{
+            nav.classList.add("active")
+            document.querySelector(".fa-bars").style.display="none";
+            document.querySelector(".fa-xmark").style.display="block";
+        })
+        xmark.addEventListener("click",(e)=>{
+            nav.classList.remove("active")
+            document.querySelector(".fa-bars").style.display="block";
+            document.querySelector(".fa-xmark").style.display="none";
+        })
+     </script>
 </body>
 </html>

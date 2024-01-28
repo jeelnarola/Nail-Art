@@ -1,62 +1,144 @@
 @media (min-width: 576px) {
+  .col-sm-1 {
+    width: 8.333%;
+  }
+  .col-sm-2 {
+    width: 16.666%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-4 {
+    width: 33.333%;
+  }
+  .col-sm-5 {
+    width: 41.666%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-7 {
+    width: 58.333%;
+  }
+  .col-sm-8 {
+    width: 66.666%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-10 {
+    width: 83.333%;
+  }
+  .col-sm-11 {
+    width: 91.666%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
   .container {
     max-width: 540px;
   }
-  header .responsiv {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0px;
+  header {
+    background-color: #FDF5E6;
   }
-  header .responsiv nav ul {
+  header .header-menu {
     display: flex;
     flex-wrap: nowrap;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
   }
-  header .responsiv nav ul li {
-    cursor: pointer;
+  header .header-menu .logo {
+    width: 50px;
+    height: 50px;
+  }
+  header .header-menu .logo img {
+    width: 80px;
+  }
+  header .header-menu .nav {
+    display: flex;
+    position: sticky;
+    padding: 20px;
+    background-color: transparent;
+  }
+  header .header-menu .nav li {
     padding: 5px;
+    font-size: 16px;
     position: relative;
+    cursor: pointer;
   }
-  header .responsiv nav ul li::after {
+  header .header-menu .nav li::after {
     position: absolute;
     content: "";
-    width: 0%;
     left: 3px;
-    bottom: 0px;
+    width: 0%;
     height: 2px;
+    border-radius: 40px;
     background-color: black;
-    transition: all 0.4s;
+    bottom: 4px;
+    transition: all 0.3s;
   }
-  header .responsiv nav ul li:hover::after {
+  header .header-menu .nav li:hover::after {
     width: 90%;
   }
-  header .responsiv .signup-login button {
-    padding: 9px 20px;
-    border-radius: 10px;
+  header .header-menu .nav .btn button {
+    display: none;
+  }
+  header .header-menu .btn-login {
+    transform: scale(1);
+    display: inline;
+  }
+  header .header-menu .btn-login button {
+    padding: 10px 30px;
     border: 1px solid black;
-    margin-left: 5px;
-    background-color: #24a0ed;
+    border-radius: 10px;
+    background-color: #008CBA;
     text-transform: uppercase;
     color: white;
-    cursor: pointer;
-    display: inline-block;
   }
-  header .responsiv .signup-login button:hover {
-    background-color: #1584c8;
+  header .header-menu .btn-login button:hover {
+    background-color: #18abdc;
   }
-  header .responsiv .signup-login .loginbtn {
-    margin-right: 20px;
-  }
-  header .menu-icon {
+  header .header-menu .menu-icon {
     display: none;
   }
 }
 @media (min-width: 768px) {
+  .col-md-1 {
+    width: 8.333%;
+  }
+  .col-md-2 {
+    width: 16.666%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-4 {
+    width: 33.333%;
+  }
+  .col-md-5 {
+    width: 41.666%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-7 {
+    width: 58.333%;
+  }
+  .col-md-8 {
+    width: 66.666%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-10 {
+    width: 83.333%;
+  }
+  .col-md-11 {
+    width: 91.666%;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
   .box {
     width: 50%;
   }
@@ -65,61 +147,150 @@
   }
 }
 @media (min-width: 992px) {
+  .col-lg-1 {
+    width: 8.333%;
+  }
+  .col-lg-2 {
+    width: 16.666%;
+  }
+  .col-lg-3 {
+    width: 25%;
+  }
+  .col-lg-4 {
+    width: 33.333%;
+  }
+  .col-lg-5 {
+    width: 41.666%;
+  }
+  .col-lg-6 {
+    width: 50%;
+  }
+  .col-lg-7 {
+    width: 58.333%;
+  }
+  .col-lg-8 {
+    width: 66.666%;
+  }
+  .col-lg-9 {
+    width: 75%;
+  }
+  .col-lg-10 {
+    width: 83.333%;
+  }
+  .col-lg-11 {
+    width: 91.666%;
+  }
+  .col-lg-12 {
+    width: 100%;
+  }
   .container {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
+  .col-xl-1 {
+    width: 8.333%;
+  }
+  .col-xl-2 {
+    width: 16.666%;
+  }
+  .col-xl-3 {
+    width: 25%;
+  }
+  .col-xl-4 {
+    width: 33.333%;
+  }
+  .col-xl-5 {
+    width: 41.666%;
+  }
+  .col-xl-6 {
+    width: 50%;
+  }
+  .col-xl-7 {
+    width: 58.333%;
+  }
+  .col-xl-8 {
+    width: 66.666%;
+  }
+  .col-xl-9 {
+    width: 75%;
+  }
+  .col-xl-10 {
+    width: 83.333%;
+  }
+  .col-xl-11 {
+    width: 91.666%;
+  }
+  .col-xl-12 {
+    width: 100%;
+  }
   .container {
     max-width: 1140px;
   }
+  .col-xs-12 {
+    padding: 70px 50px;
+  }
+  .col-xs-12 .box {
+    border: 2px solid black;
+    width: 100%;
+  }
+  .col-xs-12 .box .box-grid {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    padding: 20px;
+  }
+  .col-xs-12 .box .box-grid .bo {
+    border: 2px dotted red;
+    padding: 60px;
+  }
+  .col-xs-12 .box .box-grid #box-2 {
+    grid-row: 1/4;
+    grid-column: 2/4;
+  }
+  .col-xs-12 .box .box-grid #box-5 {
+    grid-column: 4/1;
+  }
 }
 @media (min-width: 1400px) {
+  .col-xxl-1 {
+    width: 8.333%;
+  }
+  .col-xxl-2 {
+    width: 16.666%;
+  }
+  .col-xxl-3 {
+    width: 25%;
+  }
+  .col-xxl-4 {
+    width: 33.333%;
+  }
+  .col-xxl-5 {
+    width: 41.666%;
+  }
+  .col-xxl-6 {
+    width: 50%;
+  }
+  .col-xxl-7 {
+    width: 58.333%;
+  }
+  .col-xxl-8 {
+    width: 66.666%;
+  }
+  .col-xxl-9 {
+    width: 75%;
+  }
+  .col-xxl-10 {
+    width: 83.333%;
+  }
+  .col-xxl-11 {
+    width: 91.666%;
+  }
+  .col-xxl-12 {
+    width: 100%;
+  }
   .container {
     max-width: 1320px;
-  }
-  header .responsiv nav ul {
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 10px;
-  }
-  header .responsiv nav ul li {
-    cursor: pointer;
-    padding: 5px;
-    position: relative;
-    font-size: 20px;
-  }
-  header .responsiv nav ul li::after {
-    position: absolute;
-    content: "";
-    width: 0%;
-    left: 3px;
-    bottom: 0px;
-    height: 2px;
-    background-color: black;
-    transition: all 0.4s;
-  }
-  header .responsiv nav ul li:hover::after {
-    width: 90%;
-  }
-  header .responsiv .signup-login button {
-    padding: 9px 20px;
-    border-radius: 10px;
-    border: 1px solid black;
-    margin-left: 5px;
-    background-color: #24a0ed;
-    text-transform: uppercase;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-  }
-  header .responsiv .signup-login button:hover {
-    background-color: #1584c8;
-  }
-  header .responsiv .signup-login .loginbtn {
-    margin-right: 20px;
-  }
-  header .menu-icon {
-    display: none;
   }
 }/*# sourceMappingURL=media.css.map */
