@@ -26,6 +26,10 @@ ul, ol {
   align-items: center;
 }
 
+.padding {
+  padding: 20px 0px;
+}
+
 .col-xs-1,
 .col-xs-2,
 .col-xs-3,
@@ -219,6 +223,7 @@ header .header-menu .menu-icon {
 .service .silder {
   position: relative;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 .service .silder .sider-box {
   width: auto;
@@ -263,13 +268,63 @@ header .header-menu .menu-icon {
   padding: 5px;
   font-weight: 900;
 }
-.service .content-box {
-  border: 1px solid black;
+.service .content-box .our {
+  padding: 10px;
+  position: relative;
+  font-size: 10px;
 }
-.service .content-box h2 {
-  font-size: 23px;
+.service .content-box .our::after {
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  left: 7px;
+  border-radius: 20px;
+  width: 56px;
+  height: 4px;
+  background-color: orange;
+}
+.service .content-box h1 {
+  font-size: 20px;
+  color: #053543;
+  font-weight: 400;
+  text-transform: capitalize;
+  padding: 10px;
+}
+.service .content-box samp {
+  display: block;
+  font-size: 15px;
 }
 .service .content-box button {
-  padding: 10px 20px;
-  margin: 10px 0px;
+  padding: 10px 13px;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  text-transform: capitalize;
+  background-color: #053543;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+.service .content-box button:hover {
+  background-color: rgba(5, 53, 67, 0.7803921569);
+}
+.service .content-box .s-a {
+  text-indent: 40px;
+  text-align: start;
+  color: gray;
+  font-size: 10px;
+}
+
+.top .swiper-slide {
+  flex-shrink: 1;
+}
+.top .swiper-slide .top-box {
+  width: 170px;
+  height: 179px;
+  padding: 0px 10px;
+}
+.top .swiper-slide .top-box img {
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=style.css.map */

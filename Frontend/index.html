@@ -154,29 +154,17 @@
         </div>
      </section>
 
-     <section class="service" style="padding-bottom: 100px;">
+     <section class="service" >
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8">
                     <div class="content-box">
                         <p class="our">Our Service</p>
-                        <h2>make gorgeous Nails a <samp>part of your life.</samp></h2>
+                        <h1>make gorgeous Nails a <samp>part of your life.</samp></h1>
                         <p class="s-a">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus temporibus fugit quasi porro autem, sint laborum nam distinctio? Odit iusto a amet, blanditiis reiciendis hic dolor sequi minima repellendus vero.</p>
                         <button>all service</button>
                     </div>
                 </div>
-                <!-- <div class="col-xs-12 col-sm-4">
-                    <div class="silder">
-                        <div class="sider-box">
-                            <img src="Image/1.jpg" alt="">
-                        </div>
-                        <div class="sider-content">
-                            <h5>manicure</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            <a href="">book now</a>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="col-xs-12 col-sm-4">
                     <div class="swiper mySwiper">
@@ -223,6 +211,68 @@
             </div>
         </div>
      </section>
+     <section class="top" style="padding: 50px 0px;">
+        <div class="col-xs-9">
+            <div class="top-bg"></div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-xs-3">
+               <div class="top-box">
+                <img src="Image/top-1.png" alt="">
+               </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="top-box">
+                    <img src="Image/top-2.png" alt="">
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="top-box">
+                    <img src="Image/top-3.png" alt="">
+                </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="top-box">
+                <img src="Image/top-4.png" alt="">
+              </div>
+            </div>
+        </div> -->
+        <div class="swiper my">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="top-box">
+                    <img src="Image/top-1.png" alt="">
+                   </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="top-box">
+                    <img src="Image/top-2.png" alt="">
+                   </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="top-box">
+                    <img src="Image/top-3.png" alt="">
+                   </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="top-box">
+                    <img src="Image/top-4.png" alt="">
+                   </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="top-box">
+                    <img src="Image/top-5.png" alt="">
+                   </div>
+              </div>
+              <div class="swiper-slide">Slide 6</div>
+              <div class="swiper-slide">Slide 7</div>
+              <div class="swiper-slide">Slide 8</div>
+              <div class="swiper-slide">Slide 9</div>
+            </div>
+            <!-- <div class="swiper-pagination"></div> -->
+          </div>
+
+     </section>
      <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -248,6 +298,33 @@
       },
       1024: {
         slidesPerView: 1,
+      },
+    },
+    });
+    var swiper = new Swiper(".my", {
+      slidesPerView: 4,
+    //   centeredSlides: true,
+    // //   spaceBetween: 30,
+      grabCursor: true,
+    slidesPerView: 3,
+      spaceBetween: 30,
+      freeMode: true,
+      autoplay: {
+    delay: 2000,
+  },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+      300: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
       },
     },
     });
