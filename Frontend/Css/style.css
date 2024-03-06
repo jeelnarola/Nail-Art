@@ -93,6 +93,23 @@ ul, ol {
   padding: 10px;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(88, 86, 86);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(transparent, #30ff00);
+  border-radius: 16px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(transparent, #00c6ff);
+}
+
 .col-xs-1 {
   width: 8.333%;
 }
