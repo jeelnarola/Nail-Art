@@ -199,6 +199,107 @@
     color: gray;
     font-size: 15px;
   }
+  .benner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  .benner .box-benner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 400px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 30px 50px #dbdbdb;
+  }
+  .benner .box-benner .slide .item {
+    width: 100px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 20px;
+    box-shadow: 0px 30px 50px #505050;
+    background-position: 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  .benner .box-benner .slide .item:nth-child(1), .benner .box-benner .slide .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  .benner .box-benner .slide .item:nth-child(3) {
+    left: 50%;
+  }
+  .benner .box-benner .slide .item:nth-child(4) {
+    left: calc(43% + 180px);
+  }
+  .benner .box-benner .slide .item:nth-child(5) {
+    left: calc(28% + 400px);
+  }
+  .benner .box-benner .slide .item:nth-child(n+6) {
+    left: calc(50% + 400px);
+    opacity: 0;
+  }
+  .benner .box-benner .slide .item:nth-child(2) .content {
+    display: block;
+  }
+  .benner .box-benner .slide .item .content {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    display: none;
+  }
+  .benner .box-benner .slide .item .content .name {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: animate 1s ease-in-out 1 forwards;
+  }
+  .benner .box-benner .slide .item .content .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    animation: animate 1s ease-in-out 0.3s forwards;
+  }
+  .benner .box-benner .slide .item .content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    animation: animate 1s ease-in-out 0.6s forwards;
+  }
+  .benner .box-benner .slide .item2 {
+    display: block;
+  }
+  .benner .box-benner .button {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+  }
+  .benner .box-benner .button button {
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0px 5px;
+    border: 1px solid black;
+    transition: 0.3s;
+  }
+  .benner .box-benner .button button:hover {
+    background-color: #ababab;
+    color: #fff;
+  }
 }
 @media (min-width: 768px) {
   .col-md-1 {
@@ -374,6 +475,107 @@
   .top .swiper-slide .top-box img {
     width: 100%;
     height: 100%;
+  }
+  .benner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  }
+  .benner .box-benner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 500px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 30px 50px #dbdbdb;
+  }
+  .benner .box-benner .slide .item {
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 20px;
+    box-shadow: 0px 30px 50px #505050;
+    background-position: 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+  }
+  .benner .box-benner .slide .item:nth-child(1), .benner .box-benner .slide .item:nth-child(2) {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  .benner .box-benner .slide .item:nth-child(3) {
+    left: 45%;
+  }
+  .benner .box-benner .slide .item:nth-child(4) {
+    left: calc(50% + 180px);
+  }
+  .benner .box-benner .slide .item:nth-child(5) {
+    left: calc(50% + 400px);
+  }
+  .benner .box-benner .slide .item:nth-child(n+6) {
+    left: calc(50% + 400px);
+    opacity: 0;
+  }
+  .benner .box-benner .slide .item:nth-child(2) .content {
+    display: block;
+  }
+  .benner .box-benner .slide .item .content {
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    display: none;
+  }
+  .benner .box-benner .slide .item .content .name {
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: animate 1s ease-in-out 1 forwards;
+  }
+  .benner .box-benner .slide .item .content .des {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    animation: animate 1s ease-in-out 0.3s forwards;
+  }
+  .benner .box-benner .slide .item .content button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    animation: animate 1s ease-in-out 0.6s forwards;
+  }
+  .benner .box-benner .slide .item2 {
+    display: block;
+  }
+  .benner .box-benner .button {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 20px;
+  }
+  .benner .box-benner .button button {
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0px 5px;
+    border: 1px solid black;
+    transition: 0.3s;
+  }
+  .benner .box-benner .button button:hover {
+    background-color: #ababab;
+    color: #fff;
   }
 }
 @media (min-width: 1400px) {
