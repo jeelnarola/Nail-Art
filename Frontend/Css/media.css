@@ -38,6 +38,140 @@
   .container {
     max-width: 540px;
   }
+  .Signup {
+    width: 400px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.372);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 99999;
+  }
+  .Signup .xmark {
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .Signup .signup-box {
+    padding: 20px 35px;
+  }
+  .Signup .signup-box .hr {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .Signup .signup-box h3 {
+    text-align: center;
+    margin: 10px;
+    text-transform: uppercase;
+  }
+  .Signup .signup-box .form {
+    padding: 20px;
+  }
+  .Signup .signup-box .form .input-div label {
+    margin: 0px 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+  .Signup .signup-box .form .input-div input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0px 5px 10px;
+    border: 1px solid black;
+  }
+  .Signup .signup-box .form .input-div input:focus {
+    border: 2px solid green;
+  }
+  .Signup .signup-box .form .input-checkbox {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .Signup .signup-box .form .input-checkbox .checkbox {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px 15px;
+  }
+  .Signup .signup-box .form .input-checkbox .checkbox p {
+    font-size: 12px;
+    padding-left: 5px;
+  }
+  .Signup .signup-box .form .input-checkbox h6 {
+    margin-right: 20px;
+    color: blue;
+    border-bottom: 1px solid blue;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 11px;
+  }
+  .Signup .signup-box .form button {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 50px;
+    background-color: rgb(0, 72, 255);
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .Signup .other {
+    margin-bottom: 10px;
+  }
+  .Signup .google {
+    position: relative;
+    width: 60%;
+    margin: 10px 70px;
+    margin-top: 0px;
+  }
+  .Signup .google input {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  .Signup .google img {
+    width: 25px;
+    position: absolute;
+    left: 15%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  .Signup .google p {
+    position: absolute;
+    left: 30%;
+    top: 0px;
+    bottom: 0px;
+    text-align: center;
+    padding: 5px 0px 0px 0px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .Signup .loginLink {
+    color: black;
+    text-align: center;
+    font-size: 12px;
+    padding: 5px 0px;
+    text-transform: capitalize;
+  }
+  .Signup .loginLink a {
+    padding: 0px 5px;
+    font-size: 14px;
+    color: blue;
+  }
   header {
     background-color: #FDF5E6;
   }
@@ -61,7 +195,7 @@
     background-color: transparent;
   }
   header .header-menu .nav li {
-    padding: 5px;
+    padding: 5px 10px;
     font-size: 16px;
     position: relative;
     cursor: pointer;
@@ -79,6 +213,10 @@
   }
   header .header-menu .nav li:hover::after {
     width: 90%;
+  }
+  header .header-menu .nav li a {
+    color: black;
+    text-decoration: none;
   }
   header .header-menu .nav .btn button {
     display: none;

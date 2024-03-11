@@ -38,7 +38,58 @@
 </head>
 <body>
 
-         <!-- HEADER SECTION HTML -->
+        <!-- Signup Page  -->
+
+    <div class="Signup" >
+        <div class="container">
+            <div class="Signup-close">
+                
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="signup-box">
+                <h3>Signup</h3>
+                <hr class="hr">
+                <div class="form">
+                    <form action="">
+                        <div class="input-div">
+                            <label for="" class="username">UserName</label><br/>
+                            <input type="text" name="username" id="">
+                        </div>
+                        <div class="input-div">
+                            <label for="">email</label><br/>
+                            <input type="text" name="username" id="">
+                        </div>
+                        <div class="input-div">
+                            <label for="">Password</label><br/>
+                            <input type="text" name="username" id="">
+                        </div>
+                        <div class="input-checkbox">
+                            <div class="checkbox">
+                                <input type="checkbox"><p>Show Password !</p>
+                            </div>
+                            <h6>forget password ? </h6>
+                        </div>
+                        <button type="submit" value="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="other">
+            <div class="google">
+                    <input type="text" name="" id="" >
+                    <img src="Image/google.png" alt="">
+                    <p>Signup With Google</p>
+            </div>
+            <div class="google">
+                <input type="text" name="" id="">
+                <img src="Image/facebook.png" alt="">
+                <p>Signup With facebook</p>
+        
+            </div>
+        <p class="loginLink">need an account?<a href="">Sign in</a></p>
+        </div>
+    </div>
+
+        <!-- HEADER SECTION HTML -->
 
     <header>
         <div class="container">
@@ -48,11 +99,11 @@
                 </div>
                 <nav>
                     <ul class="nav">
-                        <li>HOME</li>
-                        <li>ABOUT US</li>
-                        <li>SERVICES</li>
-                        <li>SHOP</li>
-                        <li>CONTACT US</li>
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">ABOUT US</a></li>
+                        <li><a href="#ser">SERVICES</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li><a href="">CONTACT US</a></li>
                         <div class="btn">
                             <button>Signup</button>
                             <button>Login</button>
@@ -65,7 +116,7 @@
                 </div>
                 <div class="menu-icon">
                     <i class="fa-solid fa-bars"></i>
-                    <i class="fa-solid fa-xmark" style="display: none;"></i>
+                    <i class="fa-solid fa-xmark" id="H-xmark"></i>
                 </div>
             </div>
         </div>
@@ -113,7 +164,6 @@
          <div class="container">
             <div class="box-benner">
                 <div class="slide">
-     
                     <div class="item" style="background-image: url(./Image/benner-1.jpg);">
                         <div class="content">
                             <div class="name">switzerland</div>
@@ -165,7 +215,7 @@
             </div> 
          </div>
      </section>
-     <section class="service" >
+     <section class="service" id="ser" >
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8">
@@ -319,7 +369,7 @@
   </script>
 
      <script>
-         let xmark=document.querySelector(".fa-xmark")
+         let xmark=document.querySelector("#H-xmark")
          let menu=document.querySelector(".menu-icon")
          let btn=document.querySelector(".fa-bars")
 
@@ -327,12 +377,12 @@
         btn.addEventListener("click",(e)=>{
             nav.classList.add("active")
             document.querySelector(".fa-bars").style.display="none";
-            document.querySelector(".fa-xmark").style.display="block";
+            document.querySelector("#H-xmark").style.display="block";
         })
         xmark.addEventListener("click",(e)=>{
             nav.classList.remove("active")
             document.querySelector(".fa-bars").style.display="block";
-            document.querySelector(".fa-xmark").style.display="none";
+            document.querySelector("#H-xmark").style.display="none";
         })
 
         let next=document.querySelector(".next")
@@ -355,24 +405,10 @@
                 bottomHeader.classList.remove("active")
             }
         })
+
+        document.querySelector(".Signup-close").addEventListener("click",(e)=>{
+            document.querySelector(".Signup").style.display="none"
+        })
      </script>
-     <!-- <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-     <script>
-         $(window).scroll(function(){
-             if($(window).scrollTop() > 200){
-                 $(".head").addClass("fixed");
-                 $("h1").fadeIn();
-             }
-             else{
-                 $("header").removeClass("fixed");
-                 $("h1").fadeOut();
-             }
-         })
-         $(document).ready(function(){
-             $("button").click(function(){
-                 $(this).animate({letterSpacing:"10px"})
-             })
-         })
-     </script> -->
 </body>
 </html>

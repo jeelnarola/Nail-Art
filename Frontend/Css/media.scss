@@ -15,6 +15,145 @@
     .container{
         max-width: 540px;
     }
+    .Signup{
+        width: 400px;
+        height: 600px;
+        background-color: #ffffff;
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.372);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: auto;
+        z-index: 99999;
+        .xmark{
+            font-size: 20px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        .signup-box{
+    
+            padding: 20px 35px;
+            .hr{
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            h3{
+                text-align: center;
+                margin: 10px;
+                text-transform: uppercase;
+            }
+            .form{
+                padding: 20px;
+                .input-div{
+                    label{
+                        margin: 0px 10px;
+                        padding-left: 10px;
+                        font-size: 15px;
+                        text-transform: capitalize;
+                    }
+                    input{
+                        width: 90%;
+                        padding: 10px;
+                        margin: 5px 0px 5px 10px;
+                        border: 1px solid black;
+                        // border: none;
+                        &:focus{
+                            border: 2px solid green;
+                        }
+                    }
+        
+                }
+                .input-checkbox{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    .checkbox{
+                        display: flex;
+                        flex-wrap: nowrap;
+                        padding:5px 15px;
+                        p{
+                            font-size: 12px;
+                            padding-left: 5px;
+                        }
+                    }
+                    h6{
+                        margin-right: 20px;
+                        color: blue;
+                        border-bottom:1px solid blue;
+                        cursor: pointer;
+                        text-transform: capitalize;
+                        font-size: 11px;
+                    }
+                }
+                button{
+                    display: block;
+                    margin: auto;
+                    margin-top: 20px;
+                    padding: 10px 50px;
+                    background-color: rgb(0, 72, 255);
+                    color: white;
+                    font-size: 15px;
+                    border: none;
+                    border-radius: 10px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .other{
+            margin-bottom: 10px;
+        }
+        .google{
+            position: relative;
+            width: 60%;
+            margin: 10px 70px;
+            margin-top: 0px;
+                input{
+                    padding: 10px;
+                    width: 100%;
+                    text-align: center;
+                    border-radius: 20px;
+                    border: 1px solid black;
+                cursor: pointer;
+                }
+                img{
+                width: 25px;
+                position: absolute;
+                left: 15%;
+                top: 0px;
+                bottom: 0px;
+                margin: auto;
+            }
+            p{
+                position: absolute; 
+                left:30%;
+                top: 0px;
+                bottom: 0px;
+                text-align: center;
+                padding: 5px 0px 0px 0px;
+                text-transform: capitalize; 
+                cursor: pointer;
+            }
+        }
+        .loginLink{
+            color: black;
+            text-align: center;
+            font-size: 12px;
+            padding: 5px 0px;
+            text-transform: capitalize;
+            a{
+                padding: 0px 5px;
+                font-size: 14px;
+                color: blue;
+            }
+        }
+    }
     header{
         background-color:#FDF5E6;
         .header-menu{
@@ -36,7 +175,7 @@
                 padding: 20px;
                 background-color: transparent;
                 li{
-                    padding: 5px;
+                    padding: 5px 10px;
                     font-size: 16px;
                     position: relative;
                     cursor: pointer;
@@ -55,6 +194,10 @@
                         &::after{
                             width: 90%;
                         }
+                    }
+                    a{
+                        color: black;
+                        text-decoration: none;
                     }
                 }
                 .btn{

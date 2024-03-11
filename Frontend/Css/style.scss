@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    outline: none;
 }
 .container{
     max-width: 100%;
@@ -113,65 +114,153 @@ ul,ol{
 
 //   HEADER SECTION DESIGN CSS
 
-// header{
-//     background-color: #FDF5E6;
-//     .class{
-//         .logo{
-//             display: flex;
-//             align-items: center;
-//             width: 70px;
-//             height: 70px;
-//             // border: 1px solid black;
-//             img{
-//                 width: 100%;
-//             }
-//         }
-//         .responsiv{
-//             position: fixed;
-//             right: 0px;
-//             top: 40px;
-//             width: 100%;
-//             height: 100vh;
-//             color: black;
-//             padding: 20px 10px;
-//             background-color: rgba(0, 0, 0, 0.214);
-//             text-transform: capitalize;
-//             nav{
-//                 ul{
-//                     display: flex;
-//                     flex-wrap: wrap;
-//                     flex-direction: column;
-//                     li{
-//                         padding: 5px 10px;
-//                     }
-//                 }
-//             }
-//             .signup-login{
-//                 button{
-//                     display: block;
-//                     padding: 8px 30px;
-//                     margin: 5px 10px;
-//                     background-color: #24a0ed;
-//                     text-transform: uppercase;
-//                     color: white;
-//                     padding: 9px 20px;
-//                     border-radius: 10px;
-//                     border: 1px solid black;
-//                     &:hover{
-//                         background-color: #1584c8;
-//                     }
-//                 }
-//             }
-//         }
-//         .menu-icon{
-//             i{
-//                 font-size: 20px;
-//                 padding: 10px;
-//             }
-//         }
-//     }
+html{
+    scroll-behavior: smooth;
+}
+
+.Signup{
+    // display: none;
+    width: 350px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.372);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 99999;
+    .Signup-close{
+        font-size: 20px;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        cursor: pointer;
+    }
+    .signup-box{
+
+        padding: 20px 35px;
+        .hr{
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        h3{
+            text-align: center;
+            margin: 10px;
+            text-transform: uppercase;
+        }
+        .form{
+            padding: 20px;
+            .input-div{
+                label{
+                    margin: 0px 10px;
+                    padding-left: 10px;
+                    font-size: 15px;
+                    text-transform: capitalize;
+                }
+                input{
+                    width: 100%;
+                    padding: 10px;
+                    margin: 5px 0px 5px 10px;
+                    border: 1px solid black;
+                    // border: none;
+                    &:focus{
+                        border: 2px solid green;
+                    }
+                }
     
-// }
+            }
+            .input-checkbox{
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                justify-content: space-between;
+                .checkbox{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    padding:5px 15px;
+                    p{
+                        font-size: 12px;
+                        padding-left: 5px;
+                    }
+                }
+                h6{
+                    margin-right: 0px;
+                    color: blue;
+                    border-bottom:1px solid blue;
+                    cursor: pointer;
+                    text-transform: capitalize;
+                    font-size: 11px;
+                }
+            }
+            button{
+                display: block;
+                margin: auto;
+                margin-top: 20px;
+                padding: 10px 50px;
+                background-color: rgb(0, 72, 255);
+                color: white;
+                font-size: 15px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+        }
+    }
+    .other{
+        margin-bottom: 10px;
+    }
+    .google{
+        position: relative;
+        width: 60%;
+        margin: 10px 70px;
+        margin-top: 0px;
+            input{
+                padding: 10px;
+                width: 100%;
+                text-align: center;
+                border-radius: 20px;
+                border: 1px solid black;
+            cursor: pointer;
+            }
+            img{
+            width: 25px;
+            position: absolute;
+            left: 5%;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+        }
+        p{
+            position: absolute; 
+            left:20%;
+            top: 0px;
+            bottom: 0px;
+            font-size: 14px;
+            text-align: center;
+            padding: 5px 0px 0px 0px;
+            text-transform: capitalize; 
+            cursor: pointer;
+        }
+    }
+    .loginLink{
+        color: black;
+        text-align: center;
+        font-size: 12px;
+        padding: 5px 0px;
+        text-transform: capitalize;
+        a{
+            padding: 0px 5px;
+            font-size: 14px;
+            color: blue;
+        }
+    }
+}
+
+
 header{
     background-color: #FDF5E6;
     .header-menu{
@@ -179,6 +268,7 @@ header{
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
+
         .logo{
             width: 50px;
             height: 50px;
@@ -218,6 +308,7 @@ header{
         }
         .active{
             right: 0px;
+            z-index: 99999;
         }
         .btn-login{
             transform: scale(0);
@@ -225,6 +316,9 @@ header{
         .menu-icon{
             font-size: 20px;
             padding: 10px;
+            #H-xmark{
+                display: none;
+            }
         }
     }
 }
