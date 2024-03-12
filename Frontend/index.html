@@ -7,61 +7,39 @@
     <title>Luxury Nails</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+        /* FONT AWESOME LINK */
         @import url(Css/all.min.css);
+        /* CUSTOM CSS LINK */
         @import url(Css/style.css);
+        /* MEDIA QUERY LINK */
         @import url(Css/media.css); 
-        
-        .bo{
-            overflow: hidden;
-        }
-        img{
-            width: 100%;
-        }
-        #box-1{
-            width: 114px;
-            height: 150px;
-        }
-        #box-4{
-            width: 114px;
-            height: 144px;   
-        }
-        #box-2{
-            grid-row: 1/4;
-            grid-column: 2/4;
-            height: 300px;
-        }
-        #box-5{
-            grid-column: 4/1;
-            height: 85px;
-        }
     </style>
 </head>
 <body>
 
-        <!-- Signup Page  -->
+        <!-- Signup Page START -->
 
     <div class="Signup" >
         <div class="container">
-            <div class="Signup-close">
-                
+            <div class="Signup-close">   
                 <i class="fa-solid fa-xmark"></i>
             </div>
             <div class="signup-box">
                 <h3>Signup</h3>
                 <hr class="hr">
                 <div class="form">
-                    <form action="">
+                    <form id="SignupFrom" name="contact-form">
                         <div class="input-div">
                             <label for="" class="username">UserName</label><br/>
-                            <input type="text" name="username" id="">
+                            <input type="text" name="username" id="username">
                         </div>
                         <div class="input-div">
                             <label for="">email</label><br/>
-                            <input type="text" name="username" id="">
+                            <input type="text" name="email" id="email">
                         </div>
                         <div class="input-div">
                             <label for="">Password</label><br/>
-                            <input type="text" name="username" id="">
+                            <input type="text" name="password" id="password">
                         </div>
                         <div class="input-checkbox">
                             <div class="checkbox">
@@ -69,7 +47,7 @@
                             </div>
                             <h6>forget password ? </h6>
                         </div>
-                        <button type="submit" value="submit">Submit</button>
+                        <input class="button" type="submit" value="submit" id="submit">
                     </form>
                 </div>
             </div>
@@ -89,7 +67,54 @@
         </div>
     </div>
 
-        <!-- HEADER SECTION HTML -->
+        <!-- Signup Page CLOSE -->
+        <!-- LOGIN Page START -->
+
+    <div class="Login" >
+        <div class="container">
+            <div class="Login-close">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="Login-box">
+                <h3>Login</h3>
+                <hr class="hr">
+                <div class="Login-form">
+                    <form action="">
+                        <div class="Login-div">
+                            <label for="">email</label><br/>
+                            <input type="text" name="username" id="">
+                        </div>
+                        <div class="Login-div">
+                            <label for="">Password</label><br/>
+                            <input type="text" name="username" id="">
+                        </div>
+                        <div class="Login-checkbox">
+                            <div class="checkbox">
+                                <input type="checkbox"><p>Show Password !</p>
+                            </div>
+                            <h6>forget password ? </h6>
+                        </div>
+                        <button type="submit" value="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="other">
+            <div class="Login-google">
+                <input type="text" name="" id="" >
+                <img src="Image/google.png" alt="">
+                <p>Signup With Google</p>
+            </div>
+            <div class="Login-google">
+                <input type="text" name="" id="">
+                <img src="Image/facebook.png" alt="">
+                <p>Signup With facebook</p>
+            </div>
+            <p class="SignupLink">need an account?<a href="">Login</a></p>
+        </div>
+    </div>
+
+        <!-- LOGIN Page CLOSE -->
+        <!-- HEADER SECTION HTML  START-->
 
     <header>
         <div class="container">
@@ -105,14 +130,14 @@
                         <li><a href="">SHOP</a></li>
                         <li><a href="">CONTACT US</a></li>
                         <div class="btn">
-                            <button>Signup</button>
-                            <button>Login</button>
+                            <button id="signupHeader">Signup</button>
+                            <button id="loginHeader">Login</button>
                         </div>
                     </ul>
                 </nav>
                 <div class="btn-login">
-                    <button>Signup</button>
-                    <button>Login</button>
+                    <button id="Signupbtn">Signup</button>
+                    <button id="Loginbtn">Login</button>
                 </div>
                 <div class="menu-icon">
                     <i class="fa-solid fa-bars"></i>
@@ -121,6 +146,10 @@
             </div>
         </div>
     </header>
+
+        <!-- HEADER SECTION HTML  CLOSE-->
+        <!-- BOTTOM HEADER SECTION START  -->
+
     <section class="bottomHeader">
         <div class="container">
             <div>
@@ -134,32 +163,9 @@
         </div>
     </section>
 
-     <!-- BENNER SECTION HTML -->
+        <!-- BOTTOM HEADER SECTION CLOSE  -->
+        <!-- BENNER SECTION HTML START -->
 
-     <!-- <section>
-        <div class="container">
-           <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <div class="box" >
-                    <div class="box-grid">
-                        <div class="bo" id="box-1"></div>
-                        <div class="bo" id="box-2"></div>
-                        <div class="bo" id="box-4"></div>
-                        <div class="bo" id="box-5"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <div class="box" style="border: 1px solid red;">
-                    <p>about Us</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo possimus, nisi in rem ad laudantium tempora doloremque consequuntur quasi similique repudiandae esse voluptas doloribus et.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis magni aliquid beatae illo, eius, tenetur voluptatum corporis voluptates accusantium eligendi earum mollitia odio ab culpa blanditiis officiis adipisci deleniti provident, possimus eaque id numquam tempore. Possimus impedit natus earum laboriosam amet quas quibusdam! Quidem, reiciendis.</p>
-
-                </div>
-            </div>
-           </div>
-        </div>
-     </section> -->
      <section class="benner">
          <div class="container">
             <div class="box-benner">
@@ -215,7 +221,11 @@
             </div> 
          </div>
      </section>
-     <section class="service" id="ser" >
+
+        <!-- BENNER SECTION HTML CLOSE -->
+        <!-- SERVICE SECTION HTML START -->
+     
+    <section class="service" id="ser" >
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-8">
@@ -271,8 +281,12 @@
                 </div>
             </div>
         </div>
-     </section>
-     <section class="top" style="padding: 50px 0px;">
+    </section>
+
+        <!-- SERVICE SECTION HTML CLOSE -->
+        <!-- GEALLRY  SECTION HTML START -->
+     
+    <section class="top" style="padding: 50px 0px;">
         <div class="col-xs-9">
             <div class="top-bg"></div>
         </div>
@@ -310,19 +324,29 @@
             </div>
           </div>
 
-     </section>
-     <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </section>
 
-  <!-- Initialize Swiper -->
-  <script>
+     <!-- GEALLRY  SECTION HTML CLOSE -->
+     <!-- Swiper CDN JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- CUSTOM SINGUP JS -->
+
+<script src="JavaScript/Singup.js"></script>
+
+  <!-- Initialize Swiper START -->
+<script>
+
+    // SERVICE SLIDER START
+
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
       spaceBetween: 30,
       freeMode: true,
       autoplay: {
     delay: 1000,
-  },
+    },
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -339,22 +363,24 @@
       },
     },
     });
+
+    // service SLIDER CLOSE
+    // GEALLRY SLIDER START
+
     var swiper = new Swiper(".my", {
       slidesPerView: 4,
-    //   centeredSlides: true,
-    // //   spaceBetween: 30,
       grabCursor: true,
     slidesPerView: 3,
       spaceBetween: 30,
       freeMode: true,
       autoplay: {
     delay: 2000,
-  },
-      pagination: {
+    },
+    pagination: {
         el: ".swiper-pagination",
         clickable: true,
-      },
-      breakpoints: {
+    },
+    breakpoints: {
       300: {
         slidesPerView: 2,
       },
@@ -366,49 +392,118 @@
       },
     },
     });
-  </script>
 
-     <script>
-         let xmark=document.querySelector("#H-xmark")
-         let menu=document.querySelector(".menu-icon")
-         let btn=document.querySelector(".fa-bars")
+    // GEALLRY SILDER START
+</script>
 
-         let nav=document.querySelector(".nav")
-        btn.addEventListener("click",(e)=>{
-            nav.classList.add("active")
-            document.querySelector(".fa-bars").style.display="none";
-            document.querySelector("#H-xmark").style.display="block";
-        })
-        xmark.addEventListener("click",(e)=>{
-            nav.classList.remove("active")
-            document.querySelector(".fa-bars").style.display="block";
-            document.querySelector("#H-xmark").style.display="none";
-        })
+    <!-- Initialize Swiper CLOSE -->
+    <!-- CUSTOM JAVASCRIPT START -->
 
-        let next=document.querySelector(".next")
-        let prev=document.querySelector(".prev")
-        next.addEventListener("click",()=>{
-            let items=document.querySelectorAll(".item")
-            document.querySelector(".slide").appendChild(items[0])
-        })
-        prev.addEventListener("click",()=>{
-            let items=document.querySelectorAll(".item")
-            document.querySelector(".slide").prepend(items[items.length - 1])
-        })
+<script> 
 
-        window.addEventListener("scroll",()=>{
-            let bottomHeader=document.querySelector(".bottomHeader")
-            if(window.scrollY>200){
-                bottomHeader.classList.add("active")
-            }
-            else{
-                bottomHeader.classList.remove("active")
-            }
-        })
+        // RESPONSIV HEADER => CLICK TO MENU AND OPEN HEDER START
 
-        document.querySelector(".Signup-close").addEventListener("click",(e)=>{
-            document.querySelector(".Signup").style.display="none"
-        })
-     </script>
+    let xmark=document.querySelector("#H-xmark")
+    let menu=document.querySelector(".menu-icon")
+    let btn=document.querySelector(".fa-bars")
+    let nav=document.querySelector(".nav")
+        
+    btn.addEventListener("click",(e)=>{
+        nav.classList.add("active")
+        document.querySelector(".fa-bars").style.display="none";
+        document.querySelector("#H-xmark").style.display="block";
+    })
+    xmark.addEventListener("click",(e)=>{
+        nav.classList.remove("active")
+        document.querySelector(".fa-bars").style.display="block";
+        document.querySelector("#H-xmark").style.display="none";
+    })
+
+        // RESPONSIV HEADER => CLICK TO MENU AND OPEN HEDER CLOSE
+        // BENNER SECTION SLIDER JS START  
+
+    let next=document.querySelector(".next")
+    let prev=document.querySelector(".prev")
+    next.addEventListener("click",()=>{
+        let items=document.querySelectorAll(".item")
+        document.querySelector(".slide").appendChild(items[0])
+    })
+    prev.addEventListener("click",()=>{
+        let items=document.querySelectorAll(".item")
+        document.querySelector(".slide").prepend(items[items.length - 1])
+    })
+
+        // BENNER SECTION SLIDER JS START
+        // SCROLL TO WEBSITE IN BOTTOM HEADER ACTIVE START 
+
+    window.addEventListener("scroll",()=>{
+        let bottomHeader=document.querySelector(".bottomHeader")
+        if(window.scrollY>200){
+            bottomHeader.classList.add("active")
+        }
+        else{
+            bottomHeader.classList.remove("active")
+        }
+    })
+
+        // SCROLL TO WEBSITE IN BOTTOM HEADER ACTIVE CLOSE
+        // SIGNUP PAGE CLOSE
+
+    document.querySelector(".Signup-close").addEventListener("click",(e)=>{
+        document.querySelector(".Signup").style.display="none"
+    })
+
+        // MAIN HEADER SIGNUP BUTTON CLICK TO OPEN SIGNUP FORM
+
+    document.querySelector("#Signupbtn").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Signup").style.display="block"
+    })
+
+        // CHANGE THE SIGNUP TO LOGIN
+    
+    document.querySelector(".loginLink").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Login").style.display="block"
+        document.querySelector(".Signup").style.display="none"
+    })
+
+        // LOGIN PAGE CLOSE
+
+    document.querySelector(".Login-close").addEventListener("click",()=>{
+        document.querySelector(".Login").style.display="none"
+    })
+
+        // CHANGE THE LOGIN TO SIGNUP
+    
+    document.querySelector(".SignupLink").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Login").style.display="none"
+        document.querySelector(".Signup").style.display="block"
+    })
+
+        // MAIN HEADER LOGIN BUTTON CLICK TO OPEN LOGIN FORM
+
+    document.querySelector("#Loginbtn").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Login").style.display="block"
+    })
+
+        // RESPONSIVE HEADER SINGUP BUTTON CLICK TO OPEN SINGUP FORM
+
+    document.getElementById("signupHeader").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Signup").style.display="block"
+    })
+
+        // RESPONSIVE HEADER LOGIN BUTTON CLICK TO OPEN LOGIN FORM
+
+    document.getElementById("loginHeader").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.querySelector(".Login").style.display="block"
+    })
+</script>
+
+    <!-- CUSTOM JAVASCRIPT START -->
 </body>
 </html>

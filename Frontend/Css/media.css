@@ -113,7 +113,7 @@
     text-transform: capitalize;
     font-size: 11px;
   }
-  .Signup .signup-box .form button {
+  .Signup .signup-box .form .button {
     display: block;
     margin: auto;
     margin-top: 20px;
@@ -168,6 +168,140 @@
     text-transform: capitalize;
   }
   .Signup .loginLink a {
+    padding: 0px 5px;
+    font-size: 14px;
+    color: blue;
+  }
+  .Login {
+    width: 400px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.372);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    z-index: 99999;
+  }
+  .Login .Login-close {
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+  }
+  .Login .Login-box {
+    padding: 20px 35px;
+  }
+  .Login .Login-box .hr {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .Login .Login-box h3 {
+    text-align: center;
+    margin: 10px;
+    text-transform: uppercase;
+  }
+  .Login .Login-box .Login-form {
+    padding: 20px;
+  }
+  .Login .Login-box .Login-form .Login-div label {
+    margin: 0px 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    text-transform: capitalize;
+  }
+  .Login .Login-box .Login-form .Login-div input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0px 5px 10px;
+    border: 1px solid black;
+  }
+  .Login .Login-box .Login-form .Login-div input:focus {
+    border: 2px solid green;
+  }
+  .Login .Login-box .Login-form .Login-checkbox {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .Login .Login-box .Login-form .Login-checkbox .checkbox {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px 15px;
+  }
+  .Login .Login-box .Login-form .Login-checkbox .checkbox p {
+    font-size: 12px;
+    padding-left: 5px;
+  }
+  .Login .Login-box .Login-form .Login-checkbox h6 {
+    margin-right: 20px;
+    color: blue;
+    border-bottom: 1px solid blue;
+    cursor: pointer;
+    text-transform: capitalize;
+    font-size: 11px;
+  }
+  .Login .Login-box .Login-form .button {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px 50px;
+    background-color: rgb(0, 72, 255);
+    color: white;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .Login .other {
+    margin-bottom: 10px;
+  }
+  .Login .Login-google {
+    position: relative;
+    width: 60%;
+    margin: 10px 70px;
+    margin-top: 0px;
+  }
+  .Login .Login-google input {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  .Login .Login-google img {
+    width: 25px;
+    position: absolute;
+    left: 15%;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+  }
+  .Login .Login-google p {
+    position: absolute;
+    left: 30%;
+    top: 0px;
+    bottom: 0px;
+    text-align: center;
+    padding: 5px 0px 0px 0px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .Login .SignupLink {
+    color: black;
+    text-align: center;
+    font-size: 12px;
+    padding: 5px 0px;
+    text-transform: capitalize;
+  }
+  .Login .SignupLink a {
     padding: 0px 5px;
     font-size: 14px;
     color: blue;

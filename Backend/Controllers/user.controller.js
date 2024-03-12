@@ -16,7 +16,19 @@ const signup=async(req,res)=>{
     } catch (error) {
         console.log(error);
     }
-
+}
+const SignupCheak=async(req,res)=>{
+    try {
+        let {email}=req.query
+        let data=await UserSingup.findOne({email:email})
+       if(data){
+        res.send({data:data})
+       }else{
+        res.send({msg:"user Not"})
+       }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const Login=async(req,res)=>{
@@ -34,4 +46,4 @@ const Login=async(req,res)=>{
     }
 }
 
-module.exports={signup,Login}
+module.exports={signup,Login,SignupCheak}

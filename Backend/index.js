@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cors())
 app.use(router)
-app.listen(process.env.port, () => {
-  console.log(`Server Start ${process.env.port}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server Start ${process.env.PORT}`);
   database();
 });
