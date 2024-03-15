@@ -1,5 +1,5 @@
 const {Router}=require('express')
-const { signup, Login, SignupCheak, LoginCheck, EmailVerify } = require('../Controllers/user.controller')
+const { signup, Login, SignupCheak, LoginCheck, EmailVerify, OTPverify } = require('../Controllers/user.controller')
 
 const router=Router()
 
@@ -9,5 +9,6 @@ router.get("/SignupCheak",SignupCheak)
 router.post("/Logincheak",LoginCheck)
 
 router.post("/emailverify",EmailVerify)
+router.post("/OTPverify",OTPverify)
 
 module.exports=router

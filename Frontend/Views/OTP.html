@@ -6,18 +6,18 @@
     <title>OTP</title>
     <style>
         /* FONT AWESOME LINK */
-        @import url(.../Css/all.min.css);
+        @import url(../Css/all.min.css);
         /* CUSTOM CSS LINK */
         @import url(../Css/style.css); 
         /* MEDIA QUERY LINK */
-        @import url(.../Css/media.css); 
+        @import url(../Css/media.css); 
     </style>
 </head>
 <body>
     <section class="otp">
         <div class="container">
             <div class="otp-div">
-                <form action="">
+                <form action="http://localhost:8090/OTPverify" method="post" id="OTP">
                     <h2>Verify OTP</h2>
                     <p>An OTP was sent to your email.<br>Please enter the code below.</p>
                     <input type="text" id="input1" maxlength="1" name="otp" placeholder="-">
@@ -33,5 +33,24 @@
             </div>
         </div>
     </section>
+<script>
+    // document.getElementById("OTP").addEventListener("submit",(e)=>{
+    //     e.preventDefault()
+    //     let data={
+    //         input1:document.getElementById("input1").value,
+    //         input2:document.getElementById("input2").value,
+    //         input3:document.getElementById("input3").value,
+    //         input4:document.getElementById("input4").value,
+    //         input5:document.getElementById("input5").value,
+    //         input6:document.getElementById("input6").value,
+    //     }
+    //     // let arr=[data]
+    //     fetch("http://localhost:8090/OTPverify",{
+    //         method:"POST",
+    //         headers:{"content-type":"application/json"},
+    //         body:JSON.stringify(data)
+    // })
+    // })
+</script>
 </body>
 </html>

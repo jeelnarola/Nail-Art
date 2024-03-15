@@ -30,7 +30,7 @@ document.getElementById("Form").addEventListener("submit",(e)=>{
        })
        .then((res)=>{return res.json()})
        .then((data)=>{
-           console.log("done");
+        let EmailUsr=document.cookie=`User=${data.data.email};path=/`
        })
         }
     })

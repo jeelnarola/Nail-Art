@@ -39,7 +39,11 @@ document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
                     headers:{"content-type":"application/json"},
                     body:JSON.stringify(Data)
                 })
-                location.reload();
+                .then((res)=>res.json())
+                .then((data)=>{
+                    let emailSet=document.cookie=`User=${data.data.email};path=/`
+                })
+                // location.reload();
             }
         }
         else{

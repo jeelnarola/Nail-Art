@@ -37,7 +37,16 @@
                 headers:{"content-type":"application/json"},
                 body:JSON.stringify({email:email})
             })
-            window.location.href="/Frontend/Views/OTP.html"
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log(data);
+                if(data.msg){
+                    alert("Email not Mathc..")
+                }else{
+                let VerifyEmail=document.cookie=`EmailVerify=${data.email};path=/`
+                window.location.href="/Frontend/Views/OTP.html"
+                }
+            })
             }
             else{
                 alert("not email !")
