@@ -142,7 +142,7 @@ html{
     }
     .signup-box{
 
-        padding: 20px 35px;
+        padding: 0px 20px;
         .hr{
             margin-bottom: 10px;
             width: 100%;
@@ -171,6 +171,25 @@ html{
                         border: 2px solid green;
                     }
                 }
+                .p-username{
+                    padding: 0px 20px;
+                    font-size: 10px;
+                    color: red;
+                    display: none;
+                }
+                .p-email{
+                    padding: 0px 20px;
+                    font-size: 10px;
+                    color: red;
+                    display: none;
+                }
+                .p-password{
+                    padding: 0px 20px;
+                    font-size: 10px;
+                    color: red;
+                    display: none;
+                }
+
     
             }
             .input-checkbox{
@@ -336,6 +355,9 @@ html{
                     cursor: pointer;
                     text-transform: capitalize;
                     font-size: 11px;
+                    a{
+                        text-decoration: none;
+                    }
                 }
             }
             .button{
@@ -433,6 +455,7 @@ header{
                 padding: 5px;
             }
             .btn{
+                cursor: pointer;
                 button{
                     display: block;
                     padding: 10px 30px;
@@ -830,4 +853,117 @@ header{
 .active{
     transform: scale(1);
     // transition: all 0.3s ;
+}
+
+.otp{
+    .otp-div{
+        width: 400px;
+        height: 400px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 20px;
+        padding-top: 40px;
+        // text-align: ;
+        h2{
+            text-transform: uppercase;
+        }
+        p{
+            font-size: 12px;
+            padding: 10px 0px;
+            // text-transform: capitalize;
+        }
+        input{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            margin: 20px 0px;
+            margin-left:5px;
+        }
+        ::placeholder{
+            font-size: 20px;
+            color:gray;
+        }
+        .ver{
+            input{
+                width: 200px;
+                height: 50px;
+                display: block;
+                border-radius: 10px;
+                border: 1px solid black;
+                margin: auto;
+                margin-top: 20px;
+                background-color: #FDF5E6;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: all 0.3s ;
+                &:hover{
+                    letter-spacing: 5px;
+                    background-color:#f4e2c1 ;
+                }
+            }
+        }
+    }
+}
+
+.Email-Verify{
+    width: 400px;
+    height: 300px;
+    background-color: #f4e2c1;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    margin: auto;
+    border-radius: 10px;
+    .email-box{
+        padding: 20px;
+        h1{
+            text-transform: capitalize;
+        }
+        p{
+            text-transform: capitalize;
+            padding: 10px 40px 10px 15px;
+            font-size: 15px;
+        }
+        input{
+            display: block;
+        }
+        #email{
+            width: 90%;
+            padding: 15px 20px;
+            border: 1px solid black;
+            margin: 20px 0px;
+            border-radius: 5px;
+            margin-left: 20px;
+            transition: all 0.4s;
+            &:hover{
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+        }
+        #button{
+            padding: 15px 50px;
+            display: block;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 10px;
+            text-transform: capitalize;
+            background-color: #00c6ff;
+            transition: all 0.3s;
+            cursor: pointer;
+            &:hover{
+                background-color: #05a7ddd4;
+                letter-spacing: 3px;
+                color: white;
+            }
+        }
+    }
+
 }

@@ -187,7 +187,7 @@ html {
   cursor: pointer;
 }
 .Signup .signup-box {
-  padding: 20px 35px;
+  padding: 0px 20px;
 }
 .Signup .signup-box .hr {
   margin-bottom: 10px;
@@ -215,6 +215,24 @@ html {
 }
 .Signup .signup-box .form .input-div input:focus {
   border: 2px solid green;
+}
+.Signup .signup-box .form .input-div .p-username {
+  padding: 0px 20px;
+  font-size: 10px;
+  color: red;
+  display: none;
+}
+.Signup .signup-box .form .input-div .p-email {
+  padding: 0px 20px;
+  font-size: 10px;
+  color: red;
+  display: none;
+}
+.Signup .signup-box .form .input-div .p-password {
+  padding: 0px 20px;
+  font-size: 10px;
+  color: red;
+  display: none;
 }
 .Signup .signup-box .form .input-checkbox {
   display: flex;
@@ -376,6 +394,9 @@ html {
   text-transform: capitalize;
   font-size: 11px;
 }
+.Login .Login-box .Login-form .Login-checkbox h6 a {
+  text-decoration: none;
+}
 .Login .Login-box .Login-form .button {
   display: block;
   margin: auto;
@@ -465,6 +486,9 @@ header .header-menu .nav {
 }
 header .header-menu .nav li {
   padding: 5px;
+}
+header .header-menu .nav .btn {
+  cursor: pointer;
 }
 header .header-menu .nav .btn button {
   display: block;
@@ -770,4 +794,114 @@ header .header-menu .menu-icon #H-xmark {
 
 .active {
   transform: scale(1);
+}
+
+.otp .otp-div {
+  width: 400px;
+  height: 400px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 20px;
+  padding-top: 40px;
+}
+.otp .otp-div h2 {
+  text-transform: uppercase;
+}
+.otp .otp-div p {
+  font-size: 12px;
+  padding: 10px 0px;
+}
+.otp .otp-div input {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: 20px 0px;
+  margin-left: 5px;
+}
+.otp .otp-div ::-moz-placeholder {
+  font-size: 20px;
+  color: gray;
+}
+.otp .otp-div ::placeholder {
+  font-size: 20px;
+  color: gray;
+}
+.otp .otp-div .ver input {
+  width: 200px;
+  height: 50px;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #FDF5E6;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+.otp .otp-div .ver input:hover {
+  letter-spacing: 5px;
+  background-color: #f4e2c1;
+}
+
+.Email-Verify {
+  width: 400px;
+  height: 300px;
+  background-color: #f4e2c1;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  margin: auto;
+  border-radius: 10px;
+}
+.Email-Verify .email-box {
+  padding: 20px;
+}
+.Email-Verify .email-box h1 {
+  text-transform: capitalize;
+}
+.Email-Verify .email-box p {
+  text-transform: capitalize;
+  padding: 10px 40px 10px 15px;
+  font-size: 15px;
+}
+.Email-Verify .email-box input {
+  display: block;
+}
+.Email-Verify .email-box #email {
+  width: 90%;
+  padding: 15px 20px;
+  border: 1px solid black;
+  margin: 20px 0px;
+  border-radius: 5px;
+  margin-left: 20px;
+  transition: all 0.4s;
+}
+.Email-Verify .email-box #email:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.Email-Verify .email-box #button {
+  padding: 15px 50px;
+  display: block;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-transform: capitalize;
+  background-color: #00c6ff;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.Email-Verify .email-box #button:hover {
+  background-color: rgba(5, 167, 221, 0.831372549);
+  letter-spacing: 3px;
+  color: white;
 }/*# sourceMappingURL=style.css.map */

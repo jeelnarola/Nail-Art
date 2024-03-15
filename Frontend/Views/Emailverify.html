@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verify </title>
+    <style>
+        /* FONT AWESOME LINK */
+        @import url(../Css/all.min.css);
+        /* CUSTOM CSS LINK */
+        @import url(../Css/style.css); 
+        /* MEDIA QUERY LINK */
+        @import url(../Css/media.css); 
+    </style>
+</head>
+<body>
+    <section class="Email-Verify">
+        <div class="conatiner">
+            <div class="email-box">
+                <h1>forget Password </h1>
+                <p>please enater you registered Email address to recover your password.</p>
+                <form action="" id="emailVerify">
+                    <input type="text" name="email" id="email">
+                    <input type="submit" value="send OTP" id="button">
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById("emailVerify").addEventListener("submit",(e)=>{
+            e.preventDefault()
+
+            let email=document.getElementById("email").value
+            if (email) {
+                fetch("http://localhost:8090/emailverify",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({email:email})
+            })
+            window.location.href="/Frontend/Views/OTP.html"
+            }
+            else{
+                alert("not email !")
+            }
+        })
+     </script>
+</body>
+</html>

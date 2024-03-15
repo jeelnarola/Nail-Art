@@ -10,7 +10,7 @@
         /* FONT AWESOME LINK */
         @import url(Css/all.min.css);
         /* CUSTOM CSS LINK */
-        @import url(Css/style.css);
+        @import url(Css/style.css); 
         /* MEDIA QUERY LINK */
         @import url(Css/media.css); 
     </style>
@@ -32,18 +32,22 @@
                         <div class="input-div">
                             <label for="" class="username">UserName</label><br/>
                             <input type="text" name="username" id="username">
+                            <p class="p-username">UserName Not Valid </p>
                         </div>
                         <div class="input-div">
                             <label for="">email</label><br/>
                             <input type="text" name="email" id="email">
+                            <p class="p-email">Not Email Valid</p>
                         </div>
                         <div class="input-div">
                             <label for="">Password</label><br/>
-                            <input type="text" name="password" id="password">
+                            <input type="password" name="password" id="password">
+                            <p class="p-password">First Letter Chapital,special symbols,password lenth minimum 8 !</p>
+
                         </div>
                         <div class="input-checkbox">
                             <div class="checkbox">
-                                <input type="checkbox"><p>Show Password !</p>
+                                <input type="checkbox" id="checkbox"><p>Show Password !</p>
                             </div>
                             <h6>forget password ? </h6>
                         </div>
@@ -79,22 +83,22 @@
                 <h3>Login</h3>
                 <hr class="hr">
                 <div class="Login-form">
-                    <form action="">
+                    <form action="" id="Form">
                         <div class="Login-div">
                             <label for="">email</label><br/>
-                            <input type="text" name="username" id="">
+                            <input type="text" name="email" id="Login-Email">
                         </div>
                         <div class="Login-div">
                             <label for="">Password</label><br/>
-                            <input type="text" name="username" id="">
+                            <input type="password" name="password" id="Login-Password">
                         </div>
                         <div class="Login-checkbox">
                             <div class="checkbox">
                                 <input type="checkbox"><p>Show Password !</p>
                             </div>
-                            <h6>forget password ? </h6>
+                            <h6><a href="Views/Emailverify.html">forget password ?</a> </h6>
                         </div>
-                        <button type="submit" value="submit">Submit</button>
+                        <input class="button" type="submit" value="submit">
                     </form>
                 </div>
             </div>
@@ -336,6 +340,8 @@
 <script src="JavaScript/Singup.js"></script>
 
   <!-- Initialize Swiper START -->
+
+  <script src="JavaScript/Login.js"></script>
 <script>
 
     // SERVICE SLIDER START

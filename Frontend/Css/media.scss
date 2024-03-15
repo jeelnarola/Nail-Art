@@ -38,7 +38,7 @@
         }
         .signup-box{
     
-            padding: 20px 35px;
+            // padding: 20px 35px;
             .hr{
                 margin-bottom: 10px;
                 width: 100%;
@@ -355,6 +355,7 @@
                     background-color: #008CBA;
                     text-transform: uppercase;
                     color: white;
+                    cursor: pointer;
                     &:hover{
                         background-color: #18abdc;
                     }

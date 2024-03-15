@@ -60,9 +60,6 @@
     top: 10px;
     cursor: pointer;
   }
-  .Signup .signup-box {
-    padding: 20px 35px;
-  }
   .Signup .signup-box .hr {
     margin-bottom: 10px;
     width: 100%;
@@ -366,6 +363,7 @@
     background-color: #008CBA;
     text-transform: uppercase;
     color: white;
+    cursor: pointer;
   }
   header .header-menu .btn-login button:hover {
     background-color: #18abdc;
