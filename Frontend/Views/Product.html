@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List Out</title>
+    <style>
+        @import url(../Css/all.min.css);
+        @import url(../Css/style.css);
+        @import url(../Css/media.css);
+    </style>
+</head>
+<body>
+    <section class="product">
+        <div class="container">
+            <div class="product-box">
+                <div class="col-xl-3">
+                    <div class="img-box" >
+                        <input type="file" name="main" id="file" style="display: none;">
+                        <div class="img-area active" data-img="">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <h3>Upload Image</h3>
+                            <p>Image sizemust be less then <span>2MB</span></p>
+                            <!-- <img src="" alt=""> -->
+                        </div>
+                        <button class="select-image">select image</button>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="img-box">
+                        <input type="file" name="sub1" id="file2" style="display: none;">
+                        <div class="img-area">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <h3>Upload Image</h3>
+                            <p>Image sizemust be less then <span>2MB</span></p>
+                        </div>
+                        <button class="select-image2">select image</button>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="img-box">
+                        <input type="file" name="sub2" id="file3" style="display: none;">
+                        <div class="img-area">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <h3>Upload Image</h3>
+                            <p>Image sizemust be less then <span>2MB</span></p>
+                        </div>
+                        <button class="select-image3">select image</button>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <div class="img-box">
+                        <input type="file" name="sub3" id="file4" style="display: none;">
+                        <div class="img-area4">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <h3>Upload Image</h3>
+                            <p>Image sizemust be less then <span>2MB</span></p>
+                        </div>
+                        <button class="select-image4">select image</button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+    <script>
+        let main=document.getElementById("file")
+        let img_area=document.querySelector(".img-area")
+        let img_area4=document.querySelector(".img-area4")
+
+        let sub2=document.getElementById("file2")
+        document.querySelector(".select-image").addEventListener("click",(e)=>{
+            e.preventDefault()
+            main.click()
+        })
+        main.addEventListener("change",function (e){
+            e.preventDefault()
+            const image=this.files[0]
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const allImg=img_area.querySelectorAll("img")
+                allImg.forEach(item => item.remove())
+                const imgUrl=reader.result;
+                const img=document.createElement("img")
+                img.src=imgUrl;
+                img_area.appendChild(img)
+                img_area.classList.add("active")
+                img_area.dataset.img=image.name;
+            }
+            reader.readAsDataURL(image)
+        })
+
+        document.querySelector(".select-image4").addEventListener("click",()=>{
+            sub2.click()
+        })
+        sub2.addEventListener("change",function (e){
+            e.preventDefault()
+            const image=this.files[0]
+            console.log(image);
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const allImg=img_area.querySelectorAll("img")
+                allImg.forEach(item => item.remove())
+                const imgUrl=reader.result;
+                const img=document.createElement("img")
+                img.src=imgUrl;
+                img_area4.appendChild(img)
+                img_area4.classList.add("active")
+                img_area4.dataset.img=image.name;
+            }
+            reader.readAsDataURL(image)
+        })
+
+    </script>
+</body>
+</html>
