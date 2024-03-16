@@ -16,7 +16,7 @@
             <div class="product-box">
                 <div class="col-xl-3">
                     <div class="img-box" >
-                        <input type="file" name="main" id="file" style="display: none;">
+                        
                         <div class="img-area active" data-img="">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Upload Image</h3>
@@ -28,8 +28,7 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="img-box">
-                        <input type="file" name="sub1" id="file2" style="display: none;">
-                        <div class="img-area">
+                        <div class="img-area2">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Upload Image</h3>
                             <p>Image sizemust be less then <span>2MB</span></p>
@@ -39,8 +38,7 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="img-box">
-                        <input type="file" name="sub2" id="file3" style="display: none;">
-                        <div class="img-area">
+                        <div class="img-area3">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Upload Image</h3>
                             <p>Image sizemust be less then <span>2MB</span></p>
@@ -50,7 +48,6 @@
                 </div>
                 <div class="col-xl-3">
                     <div class="img-box">
-                        <input type="file" name="sub3" id="file4" style="display: none;">
                         <div class="img-area4">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Upload Image</h3>
@@ -58,16 +55,44 @@
                         </div>
                         <button class="select-image4">select image</button>
                     </div>
-                </div>  
+                </div> 
+                <form action="http://localhost:8090/productAdd" method="POST" id="ProductFrom">
+                    <input type="file" name="main" id="file" style="display: none;">
+                    <input type="file" name="sub1" id="file2" style="display: none;">
+                    <input type="file" name="sub2" id="file3" style="display: none;">
+                    <input type="file" name="sub3" id="file4" style="display: none;">
+                    <div class="box-product">
+                        <label for="">TITLE</label>
+                        <input type="text" name="title" id="" placeholder="Enter A title">
+                    </div>
+                    <div class="box-product">
+                        <label for="">price</label>
+                        <input type="number" name="price" placeholder="Enter A price">
+                    </div>
+                    <div class="box-product">
+                        <label for="">description</label>
+                        <input type="text" name="desc" id="desc" placeholder="Enter Product description">
+                    </div>
+                    <div class="box-product">
+                        <label for="">stock</label>
+                        <input type="number" name="stock" id="stock" placeholder="Enter Stock">
+                    </div>
+
+                    <input type="submit" name="" id="ProductSubmit" value="submit">
+                </form> 
             </div>
         </div>
     </section>
     <script>
-        let main=document.getElementById("file")
         let img_area=document.querySelector(".img-area")
+        let img_area2=document.querySelector(".img-area2")
+        let img_area3=document.querySelector(".img-area3")
         let img_area4=document.querySelector(".img-area4")
-
-        let sub2=document.getElementById("file2")
+        
+        
+        
+        
+        let main=document.getElementById("file")
         document.querySelector(".select-image").addEventListener("click",(e)=>{
             e.preventDefault()
             main.click()
@@ -89,27 +114,81 @@
             reader.readAsDataURL(image)
         })
 
-        document.querySelector(".select-image4").addEventListener("click",()=>{
+        let sub2=document.getElementById("file2")
+        document.querySelector(".select-image2").addEventListener("click",(e)=>{
             sub2.click()
         })
-        sub2.addEventListener("change",function (e){
-            e.preventDefault()
+        sub2.addEventListener("change",function(){
             const image=this.files[0]
-            console.log(image);
             const reader=new FileReader();
             reader.onload=()=>{
-                const allImg=img_area.querySelectorAll("img")
+                const allImg=img_area2.querySelectorAll("img")
                 allImg.forEach(item => item.remove())
                 const imgUrl=reader.result;
                 const img=document.createElement("img")
                 img.src=imgUrl;
-                img_area4.appendChild(img)
-                img_area4.classList.add("active")
-                img_area4.dataset.img=image.name;
+                img_area2.appendChild(img)
+                img_area2.classList.add("active")
+                img_area2.dataset.img=image.name;
+            }
+            reader.readAsDataURL(image)  
+        })
+    
+        let sub3=document.getElementById("file3")
+        document.querySelector(".select-image3").addEventListener("click",()=>{
+            sub3.click()
+        })
+        sub3.addEventListener("change",function (e){
+            e.preventDefault()
+            const image=this.files[0]
+            // console.log(image);
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const allImg=img_area3.querySelectorAll("img")
+                allImg.forEach(item => item.remove())
+                const imgUrl=reader.result;
+                const img=document.createElement("img")
+                img.src=imgUrl;
+                img_area3.appendChild(img)
+                img_area3.classList.add("active")
+                img_area3.dataset.img=image.name;
             }
             reader.readAsDataURL(image)
         })
 
+        // let sub4=document.getElementById("file4")
+
+        // document.querySelector(".select-image4").addEventListener("click",()=>{
+        //     sub4.click()
+        // })
+        // sub4.addEventListener("change",function (e){
+        //     e.preventDefault()
+        //     const image=this.files[0]
+        //     console.log(image);
+        //     const reader=new FileReader();
+        //     reader.onload=()=>{
+        //         const allImg=img_area.querySelectorAll("img")
+        //         allImg.forEach(item => item.remove())
+        //         const imgUrl=reader.result;
+        //         const img=document.createElement("img")
+        //         img.src=imgUrl;
+        //         img_area4.appendChild(img)
+        //         img_area4.classList.add("active")
+        //         img_area4.dataset.img=image.name;
+        //     }
+        //     reader.readAsDataURL(image)
+        // })
+        // // document.getElementById("productAdd").addEventListener("submit",(e)=>{
+        //     e.preventDefault()
+        //     let obj={
+        //         inp:document.getElementById("file").value
+        //     }
+        //         fetch("http://localhost:8090/productAdd",{
+        //     method:"POST",
+        //     headers:{"content-type":"application/json"},
+        //     body:JSON.stringify(obj)
+        //     })
+        // })
     </script>
 </body>
 </html>

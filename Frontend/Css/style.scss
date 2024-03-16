@@ -972,12 +972,11 @@ header{
     .product-box{
         display: flex;
         flex-wrap: wrap;
-        // padding: 0px 10px;
         .img-box{
             border: 1px solid beige;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            .img-area,.img-area4{
+            .img-area,.img-area2,.img-area3,.img-area4{
                 position: relative;
                 width: 100%;
                 height: 200px;
@@ -1051,6 +1050,46 @@ header{
                 cursor: pointer;
             }
 
+        }
+        #ProductFrom{
+            width: 100%;
+            padding: 20px;
+            .box-product{
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                label{
+                    padding-right: 10px;
+                }
+                input{
+                    margin: 20px 0px;
+                    display: block;
+                    padding: 10px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: end;
+                }
+            }
+            #ProductSubmit{
+                padding: 10px 30px;
+                display: block;
+                margin: auto;
+                // margin: 10px;
+                margin-bottom: 40px;
+                margin-top: 20px;
+                background-color: #008CBA;
+                border: 1px solid black;
+                border-radius: 2px;
+                color: white;
+                text-transform: capitalize;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover{
+                    background-color: #00c6ff;
+                    color: black;
+                }
+            }
         }
     }
 }
