@@ -34,23 +34,23 @@
         </div>
     </section>
 <script>
-    // document.getElementById("OTP").addEventListener("submit",(e)=>{
-    //     e.preventDefault()
-    //     let data={
-    //         input1:document.getElementById("input1").value,
-    //         input2:document.getElementById("input2").value,
-    //         input3:document.getElementById("input3").value,
-    //         input4:document.getElementById("input4").value,
-    //         input5:document.getElementById("input5").value,
-    //         input6:document.getElementById("input6").value,
-    //     }
-    //     // let arr=[data]
-    //     fetch("http://localhost:8090/OTPverify",{
-    //         method:"POST",
-    //         headers:{"content-type":"application/json"},
-    //         body:JSON.stringify(data)
-    // })
-    // })
+    document.getElementById("OTP").addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let data={
+            input1:document.getElementById("input1").value,
+            input2:document.getElementById("input2").value,
+            input3:document.getElementById("input3").value,
+            input4:document.getElementById("input4").value,
+            input5:document.getElementById("input5").value,
+            input6:document.getElementById("input6").value,
+        }
+        // let arr=[data]
+        fetch("http://localhost:8090/OTPverify",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify(data)
+    })
+    })
 </script>
 </body>
 </html>

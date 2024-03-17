@@ -1,3 +1,6 @@
+
+    // Signup Form Submit And Post Data Back-End 
+
 document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
     e.preventDefault()
     let Data={
@@ -5,6 +8,7 @@ document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
         email:document.querySelector("#email").value,
         password:document.querySelector("#password").value
     }
+    // Regex Use For Validation
     let nameregex= /^[A-Za-z. ]{3,30}$/;
     let emailregerx=/(\<|^)[\w\d._%+-]+@(?:[\w\d-]+\.)+(\w{2,})(\>|$)/;
     let passregex=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -28,12 +32,17 @@ document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
     else{
         document.querySelector(".p-password").style.display="none"
     }
+
+     // Email Enter A Check Email Extis Or Not Extis API Fetch
+
     fetch(`http://localhost:8090/SignupCheak?email=${Data.email}`)
     .then((res)=>{return res.json()})
     .then((data)=>{
         if(data.msg){
             if((nameregex.test(Data.username))&&(emailregerx.test(Data.email))&&(passregex.test(Data.password))){
-                console.log(Data);
+                
+                // Enter Email Check Not Email Match API Post call And Send Data Back-End
+
                 fetch("http://localhost:8090/signup",{
                     method:"POST",
                     headers:{"content-type":"application/json"},
@@ -41,9 +50,11 @@ document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
                 })
                 .then((res)=>res.json())
                 .then((data)=>{
+                    
+                    // Back-End Send to Fornt Side  Cookie Send Or Set Cookies
+
                     let emailSet=document.cookie=`User=${data.data.email};path=/`
                 })
-                // location.reload();
             }
         }
         else{
@@ -52,6 +63,8 @@ document.getElementById("SignupFrom").addEventListener("submit",(e)=>{
         }
     })
 })
+
+    // Live Validation UserName With Regex Start
 
 document.getElementById("username").addEventListener("keypress",()=>{
     let username=document.getElementById("username").value
@@ -65,6 +78,10 @@ document.getElementById("username").addEventListener("keypress",()=>{
     }
 })
 
+    // Live Validation UserName With Regex Close
+    // Live Validation Email With Regex Start
+
+
 document.getElementById("email").addEventListener("keypress",()=>{
     let username=document.getElementById("email").value
     let emailregerx=/(\<|^)[\w\d._%+-]+@(?:[\w\d-]+\.)+(\w{2,})(\>|$)/;
@@ -76,6 +93,10 @@ document.getElementById("email").addEventListener("keypress",()=>{
         document.querySelector(".p-email").style.display="none"
     }
 })
+
+    // Live Validation Email With Regex Close
+    // Live Validation PAssword With Regex Start
+
 document.getElementById("password").addEventListener("keypress",()=>{
     let username=document.getElementById("password").value
     let passregex=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -88,8 +109,10 @@ document.getElementById("password").addEventListener("keypress",()=>{
     }
 })
 
+    // Live Validation UserName With Regex Close
+    // Show PAssword JS
+
 document.getElementById("checkbox").addEventListener("click",(e)=>{
-    // e.preventDefault()
     let password=document.getElementById("password")
     if(password.type==="password")
     {
@@ -99,6 +122,9 @@ document.getElementById("checkbox").addEventListener("click",(e)=>{
         password.type="password"
     }
 })
+
+    
+
 // const scriptURL = 'https://script.google.com/macros/s/AKfycbxeciHNs-QsbfB8rkolxv3UI1ppupIiVE2MZUqWeNxVu5Dwk1Wr7iiovngm5MkEj7Ad/exec'
 // const form = document.forms['contact-form']
 

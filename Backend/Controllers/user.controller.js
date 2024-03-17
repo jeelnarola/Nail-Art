@@ -4,11 +4,16 @@ const otpgenretor=require("otp-generator")
 const nodemailer=require("nodemailer")
 require("dotenv").config()
 let otp;
+
+    // OTP Genret
+
 otp=otpgenretor.generate(6,{
     specialChars:false,
     lowerCaseAlphabets:false,
     upperCaseAlphabets:false,
 })
+
+    // Nodemail Email Auth
 
 const transport=nodemailer.createTransport({
     service:"gmail",
@@ -20,6 +25,7 @@ const transport=nodemailer.createTransport({
 
 
     // Signup Data Post With Password Bcrypt Use
+
 const signup=async(req,res)=>{
 
     try {
@@ -46,6 +52,7 @@ const signup=async(req,res)=>{
 }
 
     // Signup Email Cheak
+
 const SignupCheak=async(req,res)=>{
     try {
         let {email}=req.query
@@ -59,6 +66,8 @@ const SignupCheak=async(req,res)=>{
         console.log(error);
     }
 }
+
+    // Login Email Enter Check
 
 const Login=async(req,res)=>{
     try {
@@ -74,6 +83,8 @@ const Login=async(req,res)=>{
         console.log(error);
     }
 }
+
+// Login Email Enter Extis With Password Check Use For Bcrypt
 
 const LoginCheck=async(req,res)=>{
     let {email,password}=req.body
@@ -95,6 +106,8 @@ const LoginCheck=async(req,res)=>{
     }
 }
 
+
+    // EmaliVerify Pop Open And Enter Email Our Check Email Extis And Send OTP Email
 
 const EmailVerify=async(req,res)=>{
     let {email}=req.body
@@ -121,6 +134,8 @@ const EmailVerify=async(req,res)=>{
     }
 }
 
+    // User Email OTP Send To OTP box Open To Enter OTP And Check OTP
+
 const OTPverify=async(req,res)=>{
     let Verif=req.body.otp
     let myotp=''
@@ -137,5 +152,7 @@ const OTPverify=async(req,res)=>{
     }
 
 }
+
+    // All Controller Expots Use For Router Componet
 
 module.exports={signup,Login,SignupCheak,LoginCheck,EmailVerify,OTPverify}

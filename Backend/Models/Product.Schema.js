@@ -10,7 +10,8 @@ const product=new mongoose.Schema({
     desc:String,
     service:String,
     stock:Number,
-    rating:[{userid:String, value:Number}]
+    rating:[{userid:String, value:Number}],
+    view:[{userId:String,ProductId:String,views:Number}]
 })
 
 const productModel=mongoose.model("product",product)

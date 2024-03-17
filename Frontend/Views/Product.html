@@ -84,19 +84,31 @@
         </div>
     </section>
     <script>
+
+        // Img Preview Box Value
+
         let img_area=document.querySelector(".img-area")
         let img_area2=document.querySelector(".img-area2")
         let img_area3=document.querySelector(".img-area3")
         let img_area4=document.querySelector(".img-area4")
         
-        
-        
-        
+        // Img Input Teg value
+
         let main=document.getElementById("file")
+        let sub1=document.getElementById("file2")       
+        let sub2=document.getElementById("file3")
+        let sub3=document.getElementById("file4")
+
+        
+        // First Box Button Secelet Image Click Event 
+
         document.querySelector(".select-image").addEventListener("click",(e)=>{
             e.preventDefault()
             main.click()
         })
+
+        // First Image Select In First Box Preview Start
+
         main.addEventListener("change",function (e){
             e.preventDefault()
             const image=this.files[0]
@@ -114,11 +126,17 @@
             reader.readAsDataURL(image)
         })
 
-        let sub2=document.getElementById("file2")
+        // First Image Select In First Box Preview Close
+        // Second Box Button Secelet Image Click Event 
+
+        
         document.querySelector(".select-image2").addEventListener("click",(e)=>{
-            sub2.click()
+            sub1.click()
         })
-        sub2.addEventListener("change",function(){
+
+        // Second Image Select In First Box Preview Start
+
+        sub1.addEventListener("change",function(){
             const image=this.files[0]
             const reader=new FileReader();
             reader.onload=()=>{
@@ -133,15 +151,19 @@
             }
             reader.readAsDataURL(image)  
         })
+
+        // Second Image Select In First Box Preview Close
+        // Third Box Button Secelet Image Click Event 
     
-        let sub3=document.getElementById("file3")
         document.querySelector(".select-image3").addEventListener("click",()=>{
-            sub3.click()
+            sub2.click()
         })
-        sub3.addEventListener("change",function (e){
+
+        // Third Image Select In First Box Preview Start
+
+        sub2.addEventListener("change",function (e){
             e.preventDefault()
             const image=this.files[0]
-            // console.log(image);
             const reader=new FileReader();
             reader.onload=()=>{
                 const allImg=img_area3.querySelectorAll("img")
@@ -152,6 +174,31 @@
                 img_area3.appendChild(img)
                 img_area3.classList.add("active")
                 img_area3.dataset.img=image.name;
+            }
+            reader.readAsDataURL(image)
+        })
+         // Third Image Select In First Box Preview Close
+        // Four Box Button Secelet Image Click Event 
+    
+        document.querySelector(".select-image4").addEventListener("click",()=>{
+            sub3.click()
+        })
+
+        // Four Image Select In First Box Preview Start
+
+        sub3.addEventListener("change",function (e){
+            e.preventDefault()
+            const image=this.files[0]
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const allImg=img_area4.querySelectorAll("img")
+                allImg.forEach(item => item.remove())
+                const imgUrl=reader.result;
+                const img=document.createElement("img")
+                img.src=imgUrl;
+                img_area4.appendChild(img)
+                img_area4.classList.add("active")
+                img_area4.dataset.img=image.name;
             }
             reader.readAsDataURL(image)
         })
