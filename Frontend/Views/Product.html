@@ -56,11 +56,11 @@
                         <button class="select-image4">select image</button>
                     </div>
                 </div> 
-                <form action="http://localhost:8090/productAdd" method="POST" id="ProductFrom">
-                    <input type="file" name="main" id="file" style="display: none;">
-                    <input type="file" name="sub1" id="file2" style="display: none;">
-                    <input type="file" name="sub2" id="file3" style="display: none;">
-                    <input type="file" name="sub3" id="file4" style="display: none;">
+                <form action=""  id="ProductFrom">
+                    <input type="file" name="img" id="file" style="display: none;">
+                    <input type="file" name="img" id="file2" style="display: none;">
+                    <input type="file" name="img" id="file3" style="display: none;">
+                    <input type="file" name="img" id="file4" style="display: none;">
                     <div class="box-product">
                         <label for="">TITLE</label>
                         <input type="text" name="title" id="" placeholder="Enter A title">
@@ -202,40 +202,32 @@
             }
             reader.readAsDataURL(image)
         })
+        document.getElementById("ProductFrom").addEventListener("submit",(e)=>{
+            e.preventDefault()
+            let data={
+                img:document.getElementById("file").value,
+                img2:document.getElementById("file2").value,
+                img3:document.getElementById("file3").value,
+                img4:document.getElementById("file4").value,
+            }
+            // fetch("http://localhost:8090/productAdd",{
+            //     method:"POST",
+            //     headers:{"Content-Type":"application/json"},
+            //     body:JSON.stringify(data)
+            // })
+            let formdata=new FormData()
+        formdata.append("img",document.getElementById("file").files[0])
+        formdata.append("img",document.getElementById("file2").files[0])
+        formdata.append("img",document.getElementById("file3").files[0])
+        formdata.append("img",document.getElementById("file4").files[0])
+        formdata.append("name","test")
+        fetch("http://localhost:8090/productAdd",{
+            method:"POST",
+            body:formdata
+        })
 
-        // let sub4=document.getElementById("file4")
+        })
 
-        // document.querySelector(".select-image4").addEventListener("click",()=>{
-        //     sub4.click()
-        // })
-        // sub4.addEventListener("change",function (e){
-        //     e.preventDefault()
-        //     const image=this.files[0]
-        //     console.log(image);
-        //     const reader=new FileReader();
-        //     reader.onload=()=>{
-        //         const allImg=img_area.querySelectorAll("img")
-        //         allImg.forEach(item => item.remove())
-        //         const imgUrl=reader.result;
-        //         const img=document.createElement("img")
-        //         img.src=imgUrl;
-        //         img_area4.appendChild(img)
-        //         img_area4.classList.add("active")
-        //         img_area4.dataset.img=image.name;
-        //     }
-        //     reader.readAsDataURL(image)
-        // })
-        // // document.getElementById("productAdd").addEventListener("submit",(e)=>{
-        //     e.preventDefault()
-        //     let obj={
-        //         inp:document.getElementById("file").value
-        //     }
-        //         fetch("http://localhost:8090/productAdd",{
-        //     method:"POST",
-        //     headers:{"content-type":"application/json"},
-        //     body:JSON.stringify(obj)
-        //     })
-        // })
     </script>
 </body>
 </html>

@@ -137,12 +137,14 @@ const EmailVerify=async(req,res)=>{
     // User Email OTP Send To OTP box Open To Enter OTP And Check OTP
 
 const OTPverify=async(req,res)=>{
-    let Verif=req.body.otp
+    let Verif=req.body.data
+    
     let myotp=''
-
+    
     for(let i=0;i<Verif.length;i++){
         myotp+=Verif[i]
     }
+    console.log(myotp,otp);
 
     if(otp==myotp){
         res.json({msg:"Otp Verify !"})
@@ -150,6 +152,7 @@ const OTPverify=async(req,res)=>{
     else{
         res.json({msg:"Otp Not Verify !"})
     }
+    res.send("done")
 
 }
 
