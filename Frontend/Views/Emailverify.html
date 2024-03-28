@@ -46,7 +46,10 @@
                 if(data.msg){
                     alert("Email not Mathc..")
                 }else{
+                    console.log(data);
                 let VerifyEmail=document.cookie=`EmailVerify=${data.email};path=/`
+                let UserId=document.cookie=`UserID=${data._id};path=/`
+
                 window.location.href="/Frontend/Views/OTP.html"
                 }
             })

@@ -28,8 +28,9 @@ document.getElementById("Form").addEventListener("submit",(e)=>{
         if(data.msg){
             console.log("User not found");
         }
-        else{
-
+        else if(!(obj.password)){
+            alert("Pawword Enter !")
+        }else{
             // Enter Email Check Not Email Match API Post call And Send Data Back-End
 
             fetch("http://localhost:8090/Logincheak",{
@@ -39,10 +40,10 @@ document.getElementById("Form").addEventListener("submit",(e)=>{
        })
        .then((res)=>{return res.json()})
        .then((data)=>{
-
-        // Back-End Send to Fornt Side  Cookie Send Or Set Cookies
-        
-        let EmailUsr=document.cookie=`User=${data.data.email};path=/`
+        if(data){
+            let EmailUsr=document.cookie=`User=${data.data.email};path=/`
+            alert("Login...")
+        }
        })
         }
     })

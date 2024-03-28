@@ -1,7 +1,7 @@
 const {Router}=require('express')
 
     // Controller In Sub-Componet Improt 
-const { signup, Login, SignupCheak, LoginCheck, EmailVerify, OTPverify } = require('../Controllers/user.controller')
+const { signup, Login, SignupCheak, LoginCheck, EmailVerify, OTPverify, FrogetPassword } = require('../Controllers/user.controller')
 const { productAdd, Upload } = require('../Controllers/Product.controller')
 
 const router=Router()
@@ -26,5 +26,6 @@ router.post("/OTPverify",OTPverify)
 
 router.post("/productAdd",Upload,productAdd)
 
+router.patch("/FrogetPassword/:id",FrogetPassword)
 // router Exprots For Use A index.js
 module.exports=router

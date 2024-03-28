@@ -117,7 +117,7 @@ const EmailVerify=async(req,res)=>{
             from:process.env.user,
             to:email,
             subject:"reset password",
-            html:`otp --> ${otp}`
+            html:`otp --> ${otp} link= http://127.0.0.1:5501/Frontend/Views/FrogetPassword.html`
          }
          transport.sendMail(mailoptions,(err,info)=>{
             if(err){
@@ -144,7 +144,6 @@ const OTPverify=async(req,res)=>{
     for(let i=0;i<Verif.length;i++){
         myotp+=Verif[i]
     }
-    console.log(myotp,otp);
 
     if(otp==myotp){
         res.json({msg:"Otp Verify !"})
@@ -152,10 +151,37 @@ const OTPverify=async(req,res)=>{
     else{
         res.json({msg:"Otp Not Verify !"})
     }
-    res.send("done")
 
+}
+
+const FrogetPassword=async(req,res)=>{
+    let {id}=req.params
+    let {password}=req.body
+
+    if(id){
+        bcrypt.hash(password,5,async(err,hash)=>{
+            if(err){   
+                console.log(err)
+            }else{
+                let obj={password:hash}
+                let data=await UserSingup.findByIdAndUpdate(id,obj)
+                res.json("done")
+            }
+        })
+
+    }
+    // bcrypt.hash(password,5,async(err,hash)=>{
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         let obj={username,email,password:hash}
+    //         let data=await UserSingup.create(obj)
+    //         res.json({data})
+    //     }
+    // })
 }
 
     // All Controller Expots Use For Router Componet
 
-module.exports={signup,Login,SignupCheak,LoginCheck,EmailVerify,OTPverify}
+module.exports={signup,Login,SignupCheak,LoginCheck,EmailVerify,OTPverify,FrogetPassword}

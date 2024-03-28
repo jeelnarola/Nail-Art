@@ -82,13 +82,20 @@
           document.getElementById("input5").value,
           document.getElementById("input6").value,
         ];
-        console.log(data);
 
         fetch("http://localhost:8090/OTPverify", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({data:data}),
-        });
+        }).then((res)=>res.json())
+        .then((data)=>{
+          if(data.msg=="Otp Verify !"){
+            console.log("done");
+            window.location.href="/Frontend/Views/FrogetPassword.html"
+          }else{
+            console.log("Not");
+          }
+        })
       });
     </script>
   </body>
