@@ -63,11 +63,11 @@
                     <input type="file" name="img" id="file4" style="display: none;">
                     <div class="box-product">
                         <label for="">TITLE</label>
-                        <input type="text" name="title" id="" placeholder="Enter A title">
+                        <input type="text" name="title" id="title" placeholder="Enter A title">
                     </div>
                     <div class="box-product">
                         <label for="">price</label>
-                        <input type="number" name="price" placeholder="Enter A price">
+                        <input type="number" name="price" id="price" placeholder="Enter A price">
                     </div>
                     <div class="box-product">
                         <label for="">description</label>
@@ -220,7 +220,10 @@
         formdata.append("img",document.getElementById("file2").files[0])
         formdata.append("img",document.getElementById("file3").files[0])
         formdata.append("img",document.getElementById("file4").files[0])
-        formdata.append("name","test")
+        formdata.append("title",document.getElementById("title").value)
+        formdata.append("price",document.getElementById("price").value)
+        formdata.append("desc",document.getElementById("desc").value)
+        formdata.append("stock",document.getElementById("stock").value)
         fetch("http://localhost:8090/productAdd",{
             method:"POST",
             body:formdata

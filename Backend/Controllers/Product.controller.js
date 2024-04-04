@@ -1,5 +1,6 @@
 const multer = require("multer");
 const productModel = require("../Models/Product.Schema");
+const pathh=require('path')
 
 let store = multer.diskStorage({
   destination: "Images",
@@ -13,15 +14,24 @@ const Upload = multer({
 }).array("img", 4);
 
 const productAdd = async (req, res) => {
- let {title}=req.body;
+ let {title,price,desc,service,stock}=req.body;
   let images = [];
+  let path=pathh.dirname(__dirname)
+  console.log(path);
   for (let i = 0; i < req.files.length; i++) {
-    images.push({ img: req.files[i].originalname});
+    images.push({ images: path+'/Images' + '/'+ req.files[i].originalname});
   }
+  console.log(images);
 
-  let data = await productModel.create({ images: images,title });
+  let data = await productModel.create({ images: images ,title,price,desc,service,stock});
   console.log(data);
-  res.json({ msg: "Yes!" });
+  res.json({msg:"yes"});
 };
 
-module.exports = { productAdd, Upload };
+const AllProduct=async(req,res)=>{
+  let data=await productModel.find()
+  res.send(data)
+}
+
+
+module.exports = { productAdd, Upload ,AllProduct};
