@@ -322,12 +322,12 @@
   header .header-menu .nav {
     display: flex;
     position: sticky;
-    padding: 20px;
+    padding: 10px;
     background-color: transparent;
   }
   header .header-menu .nav li {
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 13px;
     position: relative;
     cursor: pointer;
   }
@@ -357,7 +357,7 @@
     display: inline;
   }
   header .header-menu .btn-login button {
-    padding: 10px 30px;
+    padding: 10px 20px;
     border: 1px solid black;
     border-radius: 10px;
     background-color: #008CBA;
@@ -570,6 +570,145 @@
     background-color: #ababab;
     color: #fff;
   }
+  .filter {
+    float: left;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    margin: 0px 10px;
+    margin-right: 50px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    position: relative;
+  }
+  .filter .filter-heading {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .filter .filter-box {
+    width: 100%;
+    height: 0vh;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+    text-transform: uppercase;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 9999;
+  }
+  .filter .filter-box i {
+    margin: 0px 3px;
+  }
+  .filter .filter-s {
+    position: absolute;
+    top: 50px;
+    z-index: 999999999999999;
+    display: none;
+    font-size: 15px;
+  }
+  .filter .filter-s .price-filter {
+    display: flex;
+    flex-direction: column;
+  }
+  .filter .filter-s .price-filter .price-box {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 5px;
+  }
+  .filter .filter-s .price-filter .price-box h6 {
+    margin: 0px 5px;
+  }
+  .filter .filter-s .price-filter input {
+    display: block;
+  }
+  .filter:hover {
+    border-radius: 10px 10px 0px 0px;
+  }
+  .filter:hover .filter-box {
+    transition: all 0.3s;
+    height: 100vh;
+  }
+  .filter:hover .filter-s {
+    display: block;
+  }
+  .Singlepage .img_box .mainImg {
+    width: 100%;
+    height: 500px;
+  }
+  .Singlepage .img_box .sub_img {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .Singlepage .img_box .sub_img .sub_img1, .Singlepage .img_box .sub_img .sub_img2, .Singlepage .img_box .sub_img .sub_img3 {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    padding: 5px;
+  }
+  .Singlepage .SinglePageContent {
+    padding: 20px 30px;
+  }
+  .Singlepage .SinglePageContent .priceAndRevi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  .Singlepage .SinglePageContent .priceAndRevi .stock {
+    display: inline-block;
+    padding: 10px 0px;
+  }
+  .Singlepage .SinglePageContent .btn {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .Singlepage .SinglePageContent .btn button {
+    width: 550px;
+    padding: 15px 0px;
+    margin: 10px 10px;
+    margin-top: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .Singlepage .SinglePageContent .btn .addToCart {
+    background-color: black;
+    color: white;
+    transition: all 0.2s ease-in-out;
+  }
+  .Singlepage .SinglePageContent .btn .addToCart:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  .Singlepage .SinglePageContent .btn .buy {
+    background-color: #00c6ff;
+    color: white;
+    transition: all 0.1s ease-in;
+  }
+  .Singlepage .SinglePageContent .btn .buy:hover {
+    background-color: #008CBA;
+    box-shadow: 0px 0px 10px rgba(0, 122, 166, 0.2);
+  }
+  .Singlepage .SinglePageContent .des {
+    text-indent: 100px;
+    color: gray;
+    padding: 30px 0px;
+    line-height: 30px;
+  }
+  .Singlepage .SinglePageContent .category {
+    color: rgb(135, 135, 135);
+  }
 }
 @media (min-width: 768px) {
   .col-md-1 {
@@ -666,6 +805,74 @@
     width: 100%;
     height: 100%;
   }
+  header {
+    background-color: #FDF5E6;
+  }
+  header .header-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .header-menu .logo {
+    width: 50px;
+    height: 50px;
+  }
+  header .header-menu .logo img {
+    width: 80px;
+  }
+  header .header-menu .nav {
+    display: flex;
+    position: sticky;
+    padding: 10px;
+    background-color: transparent;
+  }
+  header .header-menu .nav li {
+    padding: 5px 10px;
+    font-size: 16px;
+    position: relative;
+    cursor: pointer;
+  }
+  header .header-menu .nav li::after {
+    position: absolute;
+    content: "";
+    left: 3px;
+    width: 0%;
+    height: 2px;
+    border-radius: 40px;
+    background-color: black;
+    bottom: 4px;
+    transition: all 0.3s;
+  }
+  header .header-menu .nav li:hover::after {
+    width: 90%;
+  }
+  header .header-menu .nav li a {
+    color: black;
+    text-decoration: none;
+  }
+  header .header-menu .nav .btn button {
+    display: none;
+  }
+  header .header-menu .btn-login {
+    transform: scale(1);
+    display: inline;
+  }
+  header .header-menu .btn-login button {
+    padding: 10px 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #008CBA;
+    text-transform: uppercase;
+    color: white;
+    cursor: pointer;
+  }
+  header .header-menu .btn-login button:hover {
+    background-color: #18abdc;
+  }
+  header .header-menu .menu-icon {
+    display: none;
+  }
 }
 @media (min-width: 1200px) {
   .col-xl-1 {
@@ -707,29 +914,29 @@
   .container {
     max-width: 1140px;
   }
-  .col-xs-12 {
+  .service .content-box, .service .servie-box {
     padding: 70px 50px;
   }
-  .col-xs-12 .box {
+  .service .content-box .box, .service .servie-box .box {
     border: 2px solid black;
     width: 100%;
   }
-  .col-xs-12 .box .box-grid {
+  .service .content-box .box .box-grid, .service .servie-box .box .box-grid {
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     gap: 10px;
     padding: 20px;
   }
-  .col-xs-12 .box .box-grid .bo {
+  .service .content-box .box .box-grid .bo, .service .servie-box .box .box-grid .bo {
     border: 2px dotted red;
     padding: 60px;
   }
-  .col-xs-12 .box .box-grid #box-2 {
+  .service .content-box .box .box-grid #box-2, .service .servie-box .box .box-grid #box-2 {
     grid-row: 1/4;
     grid-column: 2/4;
   }
-  .col-xs-12 .box .box-grid #box-5 {
+  .service .content-box .box .box-grid #box-5, .service .servie-box .box .box-grid #box-5 {
     grid-column: 4/1;
   }
   .top {

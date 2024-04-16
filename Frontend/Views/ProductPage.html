@@ -29,31 +29,86 @@
         }
         .content{
             text-transform: capitalize;
+            width: 100%;
+            height: 70px;
+            /* background-color: aquamarine; */
+            overflow: hidden;
+            
         }
         .priceAndrating{
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-between;
         }
+        .priceAndrating p{
+            font-size: 20px;
+        }
+        .title{
+            font-size: 18px;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <section>
+    <header>
         <div class="container">
-            <div class="row">
-                <div class="col-xl-3">
-                    <div class="product-box">
-                        <div class="img">
-                            <img src="../Image/1.jpg" alt="">
+            <div class="header-menu">
+                <div class="logo">
+                    <img src="Image/logo-removebg-preview.png" alt="">
+                </div>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="">HOME</a></li>
+                        <li><a href="">ABOUT US</a></li>
+                        <li><a href="#ser">SERVICES</a></li>
+                        <li><a href="">SHOP</a></li>
+                        <li><a href="">CONTACT US</a></li>
+                        <div class="btn">
+                            <button id="signupHeader">Signup</button>
+                            <button id="loginHeader">Login</button>
                         </div>
-                        <div class="content">
-                            <h1>title</h1>
-                            <div class="priceAndrating">
-                                <p>price</p>
-                                <p>rating</p>
-                            </div>
-                        </div>
+                    </ul>
+                </nav>
+                <div class="menu-icon">
+                    <i class="fa-solid fa-bars"></i>
+                    <i class="fa-solid fa-xmark" id="H-xmark"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="filter">
+        <h3 class="filter-heading">filter<i class="fa-solid fa-sort-down"></i></h3>
+        <div class="container">
+            <div class="filter-box">
+            </div>
+            <div class="filter-s">
+                <h3>price</h3>
+                <div class="price-filter">
+                    <div class="price-box">
+                        <input type="radio" name="price" id="" ><h6>ALL</h6>
                     </div>
+                    <div class="price-box">
+                        <input type="radio" name="price" id="" ><h6>100 To 500</h6>
+                    </div>
+                    <div class="price-box">
+                        <input type="radio" name="price" id="" ><h6>Over 500</h6>
+                    </div>
+                    <!-- <input type="radio" name="price" id="" >
+                    <input type="radio" name="price" id="" > -->
+                </div>
+                <h3>Service</h3>
+                <div class="price-filter">
+                    <div class="price-box">
+                        <input  type="checkbox" name="price" id="" ><h6>ALL</h6>
+                    </div>
+                    <div class="price-box">
+                        <input type="checkbox" name="price" id="" ><h6>nail 1</h6>
+                    </div>
+                    <div class="price-box">
+                        <input type="checkbox" name="price" id="" ><h6>nail 2</h6>
+                    </div>
+                    <!-- <input type="radio" name="price" id="" >
+                    <input type="radio" name="price" id="" > -->
                 </div>
             </div>
         </div>
@@ -67,20 +122,72 @@
     </section>
 
     <script>
+        let xmark=document.querySelector("#H-xmark")
+        let menu=document.querySelector(".menu-icon")
+        let btn=document.querySelector(".fa-bars")
+        let nav=document.querySelector(".nav")
+
+        btn.addEventListener("click",(e)=>{
+        nav.classList.add("active")
+        document.querySelector(".fa-bars").style.display="none";
+        document.querySelector("#H-xmark").style.display="block";
+    })
+    xmark.addEventListener("click",(e)=>{
+        nav.classList.remove("active")
+        document.querySelector(".fa-bars").style.display="block";
+        document.querySelector("#H-xmark").style.display="none";
+    })
         const display=(data)=>{
             data.map((ele)=>{
+
+                console.log(ele);
                 let responsive=document.createElement("div")
                 responsive.setAttribute("class","col-xl-3")
                 let product_box=document.createElement("div")
                 product_box.setAttribute("class","product-box")
+
                 responsive.append(product_box)
                 let imgdiv=document.createElement('div')
                 imgdiv.setAttribute("class","img")
                 let mainimg=document.createElement("img")
-                mainimg.src=ele.images[0].images
+                mainimg.src=  `http://localhost:8090/images/${ele.images[0].images}`   
                 mainimg.alt="Image"
                 imgdiv.append(mainimg)
-                product_box.append(imgdiv)
+                let content=document.createElement("div")
+                content.setAttribute("class","content")
+                let title=document.createElement("h1")
+                title.setAttribute("class","title")
+                title.innerHTML=ele.title
+                let priceAndrating=document.createElement("div")
+                priceAndrating.setAttribute("class","priceAndrating")
+                let price=document.createElement("p")
+                price.innerHTML="₹ "+ele.price
+                let rating=document.createElement("h4")
+                rating.setAttribute("class","ratingicon")
+                let count=0,sum=0;
+                for(let i=0;i<ele.rating.length;i++){
+                    console.log("ele",ele.rating[i].value);
+                    sum+=ele.rating[i].value;
+                    count++;
+                }
+                if(ele.rating.length==0){
+                    rating.innerHTML=`<i class="fa-solid fa-star"></i> ` + 0
+                }
+                else{
+                    rating.innerHTML=`<i class="fa-solid fa-star"></i> ` + (Math.round((sum/count)*10)/10)
+                }
+                priceAndrating.append(price,rating)
+                content.append(title)
+                product_box.append(imgdiv,content,priceAndrating)
+                product_box.addEventListener("click",(e)=>{
+                    e.preventDefault()
+                    fetch(`http://localhost:8090/singlePage/${ele._id}`)
+                    .then((res)=>res.json())
+                    .then((data)=>{
+                        localStorage.setItem("SinglePageID",ele._id)
+                        window.location.href=`/Frontend/Views/SinglePage.html`
+                   })
+                })
                 document.querySelector("#append").append(responsive)
             })
         }

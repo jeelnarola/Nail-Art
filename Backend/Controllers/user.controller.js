@@ -39,9 +39,9 @@ const signup=async(req,res)=>{
                     console.log(err);
                 }
                 else{
-                    let obj={username,email,password:hash}
+                    let obj={username,email,password:hash,role:"user"}
                     let data=await UserSingup.create(obj)
-                    res.json({data})
+                    res.cookie('userId',data._id).cookie('role',data.role).json({data})
                 }
             })
         }

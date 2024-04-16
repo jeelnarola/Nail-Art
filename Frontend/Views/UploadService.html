@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Service</title>
+    <style>
+        @import url(../Css/all.min.css);
+        @import url(../Css/style.css);
+        @import url(../Css/media.css);
+    </style>
+</head>
+<body>
+    <section class="product">
+        <div class="container">
+            <div class="product-box">
+                <div class="col-xl-3">
+                    <div class="img-box">
+                        <div class="img-area active" data-img="">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <h3>Upload Image</h3>
+                            <p>Image sizemust be less then <span>2MB</span></p>
+                        </div>
+                        <button class="select-image">select image</button>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <form action=""  id="" class="Upload">
+                        <input type="file" name="Image" id="file" style="display: none;" >
+                        <div class="box-product">
+                            <label for="">SERVIEC TITLE <samp class="ServiceT">:</samp></label>
+                            <input type="text" name="title" id="title" placeholder="Enter A title">
+                        </div>
+                        <div class="box-product">
+                            <label for="" class="desc">SERVIEC description <samp>:</samp></label>
+                            <textarea name="desc" id="desc" cols="45" rows="10"></textarea>
+                            <!-- <input type="text" name="desc" id="desc" placeholder="Enter Product description"> -->
+                        </div>
+                        <input type="submit" name="" id="UploadServicebtn" value="submit">
+                    </form>
+                </div> 
+            </div>
+        </div>
+    </section>
+    <script>
+
+    let img_area=document.querySelector(".img-area")
+    let main=document.getElementById("file")
+    document.querySelector(".select-image").addEventListener("click",(e)=>{
+            e.preventDefault()
+            main.click()
+        })
+
+        // First Image Select In First Box Preview Start
+
+        main.addEventListener("change",function (e){
+            e.preventDefault()
+            const image=this.files[0]
+            const reader=new FileReader();
+            reader.onload=()=>{
+                const allImg=img_area.querySelectorAll("img")
+                allImg.forEach(item => item.remove())
+                const imgUrl=reader.result;
+                const img=document.createElement("img")
+                img.src=imgUrl;
+                img_area.appendChild(img)
+                img_area.classList.add("active")
+                img_area.dataset.img=image.name;
+            }
+            reader.readAsDataURL(image)
+        })
+        document.querySelector(".Upload").addEventListener("submit",(e)=>{
+            e.preventDefault()
+            let formdata= new FormData()
+            // let img=document.getElementById("file").value;
+            // console.log(img);
+        //     let obj={
+        //         Image:img,
+        //         title:document.getElementById("title").value,
+        //         desc:document.getElementById("desc").value
+        //     }
+        //     fetch("http://localhost:8090/serivce",{
+        //     method:"POST",
+        //     headers:{'content-type':'application/jon'},
+        //     body:JSON.stringify(obj)
+        // })
+        formdata.append("Image",document.getElementById("file").files[0])
+        formdata.append("title",document.getElementById("title").value)
+        formdata.append("desc",document.getElementById("desc").value)
+        fetch("http://localhost:8090/serivce",{
+            method:"POST",
+            body:formdata
+        })
+        })
+    </script>
+</body>
+</html>

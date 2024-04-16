@@ -7,8 +7,9 @@ const product=new mongoose.Schema({
     desc:String,
     service:String,
     stock:Number,
-    rating:[{userid:String, value:Number}],
-    view:[{userId:String,ProductId:String,views:Number}]
+    category:String,
+    rating:[{UserID:String, userName:String,value:Number,reviewTitle:String,reviewDes:String,createbydate:String}],
+    comment:{userId:String,ProductId:String,views:Number}
 })
 
 const productModel=mongoose.model("product",product)

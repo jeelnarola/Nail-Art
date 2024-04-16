@@ -8,6 +8,12 @@
         @import url(../Css/all.min.css);
         @import url(../Css/style.css);
         @import url(../Css/media.css);
+        .category-append{
+            display: flex;
+            flex-wrap: nowrap;
+            padding: 10px 0px;
+            
+        }
     </style>
 </head>
 <body>
@@ -15,8 +21,7 @@
         <div class="container">
             <div class="product-box">
                 <div class="col-xl-3">
-                    <div class="img-box" >
-                        
+                    <div class="img-box">
                         <div class="img-area active" data-img="">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Upload Image</h3>
@@ -69,13 +74,24 @@
                         <label for="">price</label>
                         <input type="number" name="price" id="price" placeholder="Enter A price">
                     </div>
+                    <div class="category-append">
+                        <label for="">category :</label>
+                    </div>
+                    <!-- <div class="box-product">
+                        <label for="" class="desc">description</label>
+                    </div> -->
                     <div class="box-product">
-                        <label for="">description</label>
-                        <input type="text" name="desc" id="desc" placeholder="Enter Product description">
+                        <label for="" class="desc">description</label>
+                        <textarea name="desc" id="desc" cols="150" rows="10"></textarea>
                     </div>
                     <div class="box-product">
                         <label for="">stock</label>
-                        <input type="number" name="stock" id="stock" placeholder="Enter Stock">
+                        <select name="stock" id="stock">
+                            <option value=" "></option>
+                            <option value="available">available</option>
+                            <option value="Notavailable">Not available</option>
+                        </select>
+                        
                     </div>
 
                     <input type="submit" name="" id="ProductSubmit" value="submit">
@@ -84,6 +100,7 @@
         </div>
     </section>
     <script>
+        let categoryName;
 
         // Img Preview Box Value
 
@@ -113,6 +130,7 @@
             e.preventDefault()
             const image=this.files[0]
             const reader=new FileReader();
+            console.log(reader);
             reader.onload=()=>{
                 const allImg=img_area.querySelectorAll("img")
                 allImg.forEach(item => item.remove())
@@ -202,6 +220,10 @@
             }
             reader.readAsDataURL(image)
         })
+
+
+
+
         document.getElementById("ProductFrom").addEventListener("submit",(e)=>{
             e.preventDefault()
             let data={
@@ -210,11 +232,7 @@
                 img3:document.getElementById("file3").value,
                 img4:document.getElementById("file4").value,
             }
-            // fetch("http://localhost:8090/productAdd",{
-            //     method:"POST",
-            //     headers:{"Content-Type":"application/json"},
-            //     body:JSON.stringify(data)
-            // })
+            
             let formdata=new FormData()
         formdata.append("img",document.getElementById("file").files[0])
         formdata.append("img",document.getElementById("file2").files[0])
@@ -224,12 +242,46 @@
         formdata.append("price",document.getElementById("price").value)
         formdata.append("desc",document.getElementById("desc").value)
         formdata.append("stock",document.getElementById("stock").value)
+        formdata.append("category",document.getElementById(`${categoryName}`).value)
         fetch("http://localhost:8090/productAdd",{
             method:"POST",
             body:formdata
         })
 
         })
+        
+        const categoryDisplay=(data)=>{
+            console.log(data);
+            data.forEach((ele)=>{
+                let div=document.createElement("div")
+                div.setAttribute("class","row")
+                div.style="margin: 0px 10px;"
+                let input=document.createElement("input")
+                input.setAttribute("type","radio")
+                input.setAttribute("name","category")
+                input.setAttribute("id",`${ele.title}`)
+
+                input.setAttribute("value",`${ele.title}`)
+                input.addEventListener("click",(e)=>{
+                    categoryName=ele.title
+                    // console.log(ele.title);
+                })
+
+                let p=document.createElement("p")
+                p.innerHTML=ele.title
+                div.append(input,p)
+                document.querySelector(".category-append").append(div)
+            })
+        }
+       
+        const category=()=>{
+            fetch("http://localhost:8090/AllSerices")
+            .then((res)=>res.json())
+            .then((data)=>{
+                categoryDisplay(data)
+            })
+        }
+        category()
 
     </script>
 </body>

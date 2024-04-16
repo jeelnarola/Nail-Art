@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>single</title>
+    <style>
+        @import url(../Css/all.min.css);
+        @import url(../Css/style.css);
+        @import url(../Css/media.css);
+        .userProfileRat{
+            width: 80px;
+            height: 90px;
+            margin: 10px;
+            
+            padding: 5px;
+            border: 1px solid cadetblue;
+            position: relative; 
+        }
+        .ProductRtaeing i{
+            color: cadetblue;
+        }
+        .userProfileRat  img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .userProfileRat h4{
+            position: absolute;
+            top: 5px;
+            font-size: 20px;
+            left: 0px;
+            margin-left: 100px;
+
+        }
+        /* .reviedisplay i{
+            background-color: cadetblue;
+        } */
+        .reviewApend i{
+            color: cadetblue;
+            margin: 0px 2px;
+        }
+        .revies-co{
+            position: relative;
+            margin: 10px 0px;
+        }
+            /* .createbydate{
+                position: absolute;
+                top: 0px;
+                right: 0px;
+            } */
+        .hr{
+            margin: 10px 0px;
+        }
+        .reviewrow{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="Singlepage"></div>
+        </div>
+    </section>
+    <section class="rating-section">
+        <div class="container">
+            <div class="rating-box">
+                <h2>Customer Reviews</h2>
+                <button class="ratingbtn">write a Reviews</button><br>
+                <button class="Cancel_Review">Cancel Review</button>
+            </div>
+            <hr>
+            <form action="" id="ratingform">
+                <h2>write a Reviews</h2>
+                <div class="ratings">
+                <label for="">rating</label>
+                <input type="number" name="rating" id="ratinginput" required hidden><br>
+                <i class="fa-regular fa-star star"></i>
+                <i class="fa-regular fa-star star"></i>
+                <i class="fa-regular fa-star star"></i>
+                <i class="fa-regular fa-star star"></i>
+                <i class="fa-regular fa-star star"></i>
+                </div>
+                <div class="rating-title">
+                    <label for="">Review Title</label><br>
+                    <input type="text" name="reviewTitle" class="reviewTitle" placeholder="give your Review a title" required>
+                </div>
+                <div class="rating-des">
+                    <label for="">Review</label><br>
+                    <textarea name="reviewDes" id="" class="reviewDes" cols="30" rows="10" placeholder="write your comments here" required></textarea>
+                </div>
+                <input type="submit" placeholder="Submit" id="ratingSubmit">
+            </form>
+            <hr>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="revies-co">
+
+            </div>
+        </div>
+    </section>
+    <section class="address">
+        <div class="container">
+            <div class="col-xl-6">
+                <form action="">
+                    <div class="information-box">
+                        <h2>contact information</h2>
+                        <input type="text" placeholder="Email"><br>
+                        <input type="number" placeholder="Mobile Number">
+                    </div>
+                    <div class="shipping-box">
+                        <h2>shipping Address</h2>
+                        <div class="shipping-name">
+                            <input type="text" name="first" id="first">
+                            <input type="text" name="last" id="last">
+                        </div>
+                        <div class="shipping-stree">
+                            <input type="text" name="stree" id="stree">
+                        </div>
+                        <div class="shipping-city">
+                            <input type="text" name="city" id="city">
+                        </div>
+                        <div class="shipping-state">
+                            <input type="text" name="state" id="state">
+                        </div>
+                        <div class="shipping-country">
+                            <select name="country" id="country" >
+                                <option value="">country select</option>
+                                <option value="india">india</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+       let stor= localStorage.getItem("SinglePageID")
+       let allstr=document.querySelectorAll(".ratings .star")
+       let ratinginput=document.querySelector(".ratings input")
+       let reviewstor;
+
+       let userName=document.cookie.split(";")[0].split("=")[1].split("@")[0]
+       console.log("ss",userName);
+       let UserID=document.cookie.split(";")[2].split("=")[1]
+       document.querySelector(".ratingbtn").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.getElementById("ratingform").style.display="block"
+        document.querySelector(".Cancel_Review").style.display="block"
+        document.querySelector(".ratingbtn").style.display="none"
+
+       })
+       document.querySelector(".Cancel_Review").addEventListener("click",(e)=>{
+        e.preventDefault()
+        document.getElementById("ratingform").style.display="none   "
+        document.querySelector(".Cancel_Review").style.display="none"
+        document.querySelector(".ratingbtn").style.display="block"
+       })
+       
+       allstr.forEach((item,idx)=>{
+           item.addEventListener("click",function(){
+            reviewstor=ratinginput.value=idx+1;
+            console.log(reviewstor)
+            allstr.forEach(i=>{
+                i.classList.replace("fa-solid","fa-regular")
+                i.classList.remove("activ")
+
+            })
+            for(let i=0;i<allstr.length;i++){
+                if(i<=idx){
+                    allstr[i].classList.replace("fa-regular","fa-solid")
+                    allstr[i].classList.add("activ")
+                }
+            }
+        })
+       });
+
+       const cart=(id)=>{
+
+        let obj={
+            productId:id,
+            userId:UserID
+        }
+        fetch("http://localhost:8090/cart",{
+            method:"POST",
+            headers:{'content-type':'application/json'},
+            body:JSON.stringify(obj)
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.msg=="already add product"){
+                alert("already add product")
+            }else{
+                alert("Add To Cart product")
+
+            }
+        })
+       }
+
+       const pay=async(amount)=>{
+        let res=await fetch("http://localhost:8090/pay",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({amount:amount})
+        })
+        let order=await res.json()
+        console.log(order);
+        let option={
+            key:"rzp_test_pitzHVt1lZC3UZ",
+            amount:order.amount
+        }
+        let razorpay=new Razorpay(option)
+        razorpay.open()
+       }
+       const SingleProductDisplay=(data)=>{
+        data.map((ele)=>{
+            console.log(ele);
+            let row=document.createElement('div')
+            row.setAttribute("class","row")
+            
+            // col 1
+            
+            let col_50=document.createElement('div')
+            col_50.setAttribute("class","col-xs-12 col-sm-6")
+            let img_box=document.createElement('div')
+            img_box.setAttribute("class","img_box")
+
+            let mainImg=document.createElement("img")
+            mainImg.setAttribute('class','mainImg')
+            mainImg.src=`http://localhost:8090/images/${ele.images[0].images}`
+            
+            let sub_img=document.createElement("div")
+            sub_img.setAttribute("class","sub_img")
+
+
+
+            let sub_img1=document.createElement('img')
+            sub_img1.src=`http://localhost:8090/images/${ele.images[1].images}`
+            sub_img1.setAttribute("class","sub_img1")
+            sub_img1.addEventListener("click",(e)=>{
+                let stor=document.querySelector(".mainImg").src
+                let sub_img1=document.querySelector(".sub_img1").src
+                
+                console.log(sub_img1);
+                if(stor==stor){
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[1].images}`
+                    document.querySelector(".sub_img1").src=`http://localhost:8090/images/${ele.images[0].images}`
+                }
+                else if(sub_img1==sub_img1){
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[0].images}`
+                    document.querySelector(".sub_img1").src=`http://localhost:8090/images/${ele.images[1].images}`
+                }
+            })
+
+            let sub_img2=document.createElement('img')
+            sub_img2.setAttribute("class","sub_img2")
+            sub_img2.src=`http://localhost:8090/images/${ele.images[2].images}`
+            sub_img2.addEventListener("click",(e)=>{
+                let stor=document.querySelector(".mainImg").src
+                // console.log(stor);
+                if(stor){
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[2].images}`
+                    document.querySelector(".sub_img2").src=`http://localhost:8090/images/${ele.images[0].images}`
+                }
+                else{
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[0].images}`
+                    document.querySelector(".sub_img2").src=`http://localhost:8090/images/${ele.images[2].images}`
+                }
+            })
+            let sub_img3=document.createElement('img')
+            sub_img3.setAttribute("class","sub_img3")
+            sub_img3.src=`http://localhost:8090/images/${ele.images[3].images}`
+            sub_img3.addEventListener("click",(e)=>{
+                let stor=document.querySelector(".mainImg").src
+                console.log(stor);
+                if(stor){
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[3].images}`
+                    document.querySelector(".sub_img3").src=`http://localhost:8090/images/${ele.images[0].images}`
+                }
+                else{
+                    document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[0].images}`
+                    document.querySelector(".sub_img3").src=`http://localhost:8090/images/${ele.images[3].images}`
+                }
+            })
+
+            sub_img.append(sub_img1,sub_img2,sub_img3)
+            
+
+            img_box.append(mainImg,sub_img)
+
+            col_50.append(img_box)
+
+
+            // col 2
+
+            let col_502=document.createElement('div')
+            col_502.setAttribute("class","col-xs-12 col-sm-6")
+
+            let content=document.createElement("div")
+            content.setAttribute("class","SinglePageContent")
+
+            let title=document.createElement("h1")
+            title.setAttribute("class",'SinglrPageTitle')
+            title.innerHTML=ele.title
+
+            let priceAndRevi=document.createElement('div')
+            priceAndRevi.setAttribute("class","priceAndRevi")
+
+            let price=document.createElement("h5")
+            price.setAttribute("class","price")
+            price.innerHTML=`₹ ${ele.price}`
+
+            let rating=document.createElement("h4")
+            rating.setAttribute("class","rating")
+            // let count=0;
+            let count=0,sum=0;
+                for(let i=0;i<ele.rating.length;i++){
+                    console.log("ele",ele.rating[i].value);
+                    sum+=ele.rating[i].value;
+                    count++;
+                }
+            if(ele.rating.length==0){
+                rating.innerHTML=`<i class="fa-solid fa-star"></i> ` + 0
+            }
+            else{
+                rating.innerHTML=`<i class="fa-solid fa-star"></i> ` + (Math.round((sum/count)*10)/10)
+            }
+
+            let stock=document.createElement('p')
+            stock.setAttribute("class","stock")
+            stock.innerHTML='Stock is  ' + ele.stock + ' available'
+
+
+            let btn=document.createElement("div")
+            btn.setAttribute("class",'btn')
+
+            let addToCart=document.createElement('button')
+            addToCart.setAttribute("class","addToCart")
+            addToCart.innerHTML='ADD TO CART'
+            addToCart.addEventListener("click",(e)=>{
+                e.preventDefault()
+                console.log("user",document.cookie.User);
+        
+                    if(userName){
+                    cart(ele._id)
+                    }else{
+                        alert("login || Signup")
+                    }
+            })
+
+            let buy=document.createElement('button')
+            buy.setAttribute("class","buy")
+            buy.innerHTML='BUY NOW'
+            buy.addEventListener("click",(e)=>{
+                e.preventDefault()
+        
+                if(userName){
+                    pay(ele.price)
+                }else{
+                    alert("login || Signup")
+                }
+            })
+            btn.append(addToCart,buy)
+
+            let des=document.createElement('p')
+            des.setAttribute('class','des')
+            des.innerHTML=ele.desc
+
+            let category=document.createElement("h4")
+            category.setAttribute('class','category')
+            category.innerHTML='Category By ' + ele.category
+
+            priceAndRevi.append(price,rating)
+
+            content.append(title,priceAndRevi,stock,btn,des,category)
+
+            col_502.append(content)
+
+            row.append(col_50,col_502)
+
+            document.querySelector(".Singlepage").append(row)
+
+
+        })
+       }
+
+       ratingDisplay=(data)=>{
+        // console.log(data);
+        
+        data.map((ele)=>{
+            let reviewrow=document.createElement("div")
+            reviewrow.setAttribute("class","reviewrow")
+           
+            let div=document.createElement("div")
+            div.setAttribute('class',"ProductRtaein")
+            for(let i=0;i<ele.value;i++){
+                let i=document.createElement('i')
+                i.setAttribute("class","fa-solid fa-star reviedisplay")
+                div.append(i)
+            }
+            let img_div=document.createElement('div')
+            img_div.setAttribute("class","userProfileRat")
+            let img=document.createElement('img')
+            img.src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeiWS55rAxDt9CdChj0qt7bIeqa2V5XYh4dQk0qSBDVg&s"
+            
+            let username=document.createElement("h4")
+            username.innerHTML=ele.userName
+
+            let raviewtitle=document.querySelector("div")
+            raviewtitle.setAttribute("class","raviewtitle")
+            let title=document.createElement("h3")
+            title.innerHTML=ele.reviewTitle
+
+            let reviewdes=document.createElement("p")
+            reviewdes.innerHTML=ele.reviewDes
+
+            img_div.append(img,username)
+            let reviewApend=document.createElement("div")
+            reviewApend.setAttribute("class","reviewApend")
+            reviewApend.append(div,img_div,title,reviewdes)
+
+            let createbydate=document.createElement("p")
+            createbydate.setAttribute("class","createbydate")
+
+            if(ele.createbydate){
+                createbydate.innerHTML=ele.createbydate
+            }
+            else{
+                createbydate.innerHTML=" "
+            }
+
+            let line=document.createElement('hr')
+            line.setAttribute("class","hr")
+            reviewrow.append(reviewApend,createbydate)
+
+            document.querySelector(".revies-co").append(line,reviewrow,line)
+        })
+       }
+
+       document.getElementById("ratingform").addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let id=localStorage.getItem("SinglePageID");
+        console.log(id);
+        let ratingRview={
+            rating:document.querySelector("#ratinginput").value,
+            reviewTitle:document.querySelector(".reviewTitle").value,
+            reviewDes:document.querySelector(".reviewDes").value,
+            UserID:UserID,
+            userName:userName,
+            id:id,
+        }
+        fetch("http://localhost:8090/review",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify(ratingRview)
+        })
+       })
+        
+        const get=()=>{
+        fetch(`http://localhost:8090/singlePage/${stor}`)
+        .then((res)=>res.json())
+        .then((data)=>{
+            SingleProductDisplay([data])
+            ratingDisplay(data.rating)
+        })
+    }
+    get()
+
+   
+    // cartA()
+    // reviewData()
+    </script>
+</body>
+</html>

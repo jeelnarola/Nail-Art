@@ -41,7 +41,11 @@ document.getElementById("Form").addEventListener("submit",(e)=>{
        .then((res)=>{return res.json()})
        .then((data)=>{
         if(data){
+            console.log(data.data);
             let EmailUsr=document.cookie=`User=${data.data.email};path=/`
+            let role=document.cookie=`role=${data.data.role};path=/`
+            let UserID=document.cookie=`UserID=${data.data._id};path=/`
+            localStorage.setItem("EmailUser",data.data.email)
             alert("Login...")
         }
        })

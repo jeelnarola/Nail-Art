@@ -124,28 +124,46 @@
         <div class="container">
             <div class="header-menu">
                 <div class="logo">
-                    <img src="Image/logo-removebg-preview.png" alt="">
+                    <img src="Image/logo.png" alt="">
                 </div>
                 <nav>
                     <ul class="nav">
                         <li><a href="">HOME</a></li>
                         <li><a href="">ABOUT US</a></li>
                         <li><a href="#ser">SERVICES</a></li>
-                        <li><a href="">SHOP</a></li>
+                        <li><a href="Views/ProductPage.html">SHOP</a></li>
+                        <li><a href="Views/Product.html">Product Add</a></li>
                         <li><a href="">CONTACT US</a></li>
                         <div class="btn">
                             <button id="signupHeader">Signup</button>
                             <button id="loginHeader">Login</button>
+                            <button id="logoutHeader">Logout</button>
                         </div>
                     </ul>
                 </nav>
                 <div class="btn-login">
                     <button id="Signupbtn">Signup</button>
                     <button id="Loginbtn">Login</button>
+                    
                 </div>
                 <div class="menu-icon">
                     <i class="fa-solid fa-bars"></i>
                     <i class="fa-solid fa-xmark" id="H-xmark"></i>
+                </div>
+                <div class="user_profile">
+                    <div class="user_img">
+                        <img src="https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTAxL3JtNjA5LXNvbGlkaWNvbi13LTAwMi1wLnBuZw.png" alt="">
+                        <h2>User <i class="fa-solid fa-angle-down"></i></h2>
+                    </div>
+                    <div class="profile_aside">
+                        <ul>
+                            <li></li>
+                            <a href="Views/cart.html"><li>cart</li></a>
+                            <a href=""><li>MyOrder</li></a>
+                            <a href=""  > <li class="pass">Cheng password</li></a>
+                            <a href=""><li id="Logout">Logout</li></a>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -242,46 +260,58 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-4">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                          <div class="swiper-slide">
-                                <div class="silder">
-                                    <div class="sider-box">
-                                        <img src="Image/1.jpg" alt="">
+                    <div class="servie-box">
+                        <div class="swiper mySwiper jeel">
+                            <div class="swiper-wrapper ServiceDisplay">
+                                <div class="swiper-slide">
+                                    <a href="./Views/UploadService.html" class="Upload-ser">
+                                        <div class="silder">
+                                            <div class="sider-box">
+                                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                                <h5 class="Upload-ser">Upload Service</h5>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="silder">
+                                        <div class="sider-box">
+                                            <img src="Image/1.jpg" alt="">
+                                        </div>
+                                        <div class="sider-content">
+                                            <h5>manicure</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <a href="">book now</a>
+                                        </div>
                                     </div>
-                                    <div class="sider-content">
-                                        <h5>manicure</h5>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        <a href="">book now</a>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="silder">
+                                        <div class="sider-box">
+                                            <img src="Image/1.jpg" alt="">
+                                        </div>
+                                        <div class="sider-content">
+                                            <h5>manicure</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <a href="">book now</a>
+                                        </div>
                                     </div>
                                 </div>
-                           </div>
-                           <div class="swiper-slide">
-                            <div class="silder">
-                                <div class="sider-box">
-                                    <img src="Image/2.jpg" alt="">
+                                <div class="swiper-slide">
+                                    <div class="silder">
+                                        <div class="sider-box">
+                                            <img src="Image/1.jpg" alt="">
+                                        </div>
+                                        <div class="sider-content">
+                                            <h5>manicure</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <a href="">book now</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="sider-content">
-                                    <h5>manicure</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                    <a href="">book now</a>
-                                </div>
                             </div>
-                       </div>
-                       <div class="swiper-slide">
-                        <div class="silder">
-                            <div class="sider-box">
-                                <img src="Image/3.png" alt="">
-                            </div>
-                            <div class="sider-content">
-                                <h5>manicure</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                <a href="">book now</a>
-                            </div>
-                        </div>
-                   </div>
-                        </div>
-                     </div>
+                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -350,9 +380,6 @@
       slidesPerView: 3,
       spaceBetween: 30,
       freeMode: true,
-      autoplay: {
-    delay: 1000,
-    },
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
@@ -406,6 +433,27 @@
     <!-- CUSTOM JAVASCRIPT START -->
 
 <script> 
+
+
+let stro=(localStorage.getItem("EmailUser"))
+let cookie=document.cookie
+    if(stro){
+        document.querySelector(".user_profile").style.display="block"
+
+        document.getElementById("Signupbtn").style.display="none"
+        document.getElementById("Loginbtn").style.display="none"
+    }else{
+        document.querySelector(".user_profile").style.display="none"
+        document.getElementById("Signupbtn").style.display="inline-block"
+        document.getElementById("Loginbtn").style.display="inline-block"
+    }
+    document.getElementById("Logout").addEventListener("click",()=>{
+        alert("User LogOut...")
+        localStorage.removeItem("EmailUser")
+        let EmailUsr=document.cookie=`User=${" "};path=/`
+            let role=document.cookie=`role=${" "};path=/`
+            let UserID=document.cookie=`UserID=${" "};path=/`
+    })
 
         // RESPONSIV HEADER => CLICK TO MENU AND OPEN HEDER START
 
@@ -508,6 +556,7 @@
         e.preventDefault()
         document.querySelector(".Login").style.display="block"
     })
+
 </script>
 
     <!-- CUSTOM JAVASCRIPT START -->
