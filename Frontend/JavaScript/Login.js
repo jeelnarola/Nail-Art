@@ -41,11 +41,12 @@ document.getElementById("Form").addEventListener("submit",(e)=>{
        .then((res)=>{return res.json()})
        .then((data)=>{
         if(data){
-            console.log(data.data);
+            console.log("data",data.token);
             let EmailUsr=document.cookie=`User=${data.data.email};path=/`
-            let role=document.cookie=`role=${data.data.role};path=/`
             let UserID=document.cookie=`UserID=${data.data._id};path=/`
+            let role=document.cookie=`role=${data.data.role};path=/`
             localStorage.setItem("EmailUser",data.data.email)
+            let token=document.cookie=`token=${data.token};path=/`
             alert("Login...")
         }
        })

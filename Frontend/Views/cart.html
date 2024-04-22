@@ -4,12 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        @import url(../Css/all.min.css);
+        @import url(../Css/style.css);
+        @import url(../Css/media.css);
+        .box{
+            background-color: beige;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <script>
-       let UserID=document.cookie.split(";")[2].split("=")[1]
 
-         const cartA=()=>{
+    <section class="cart">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4">
+                   <div class="all_cart_pay">
+                    <div class="cart_paroduct_name">
+                        <!-- <h2>All Product </h2>
+                        <h2>Totla Qty = 20</h2>
+                        <h2>Totla price = 20000</h2> -->
+                    </div>
+                   </div>
+                </div>
+                <div class="col-xl-8">
+                    <table>
+                        <thead>
+                            <th>No.<span>Product</span></th>
+                            <th>Product-<span>Image</span></th>
+                            <th>Product-<span>Name</span></th>
+                            <th>Product-<span>Price</span></th>
+                            <th>Product-<span>Quantity</span></th>
+                            <th>Total-<span>Price</span></th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+       let UserID=document.cookie.split(";")[1].split("=")[1]
+       console.log("email",UserID);
+        let Product_number=1
+
+        const QYTADD=(id,qyt)=>{
+            fetch(`http://localhost:8090/cartQyt/${id}`,{
+                method:"PATCH",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({qyt:qyt})
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+               window.location.reload()
+            })
+        }
+        const QYTMINS=(id,qyt)=>{
+            fetch(`http://localhost:8090/cartQytMins/${id}`,{
+                method:"PATCH",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({qyt:qyt})
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+               window.location.reload()
+            })
+        }
+        const QYTDEL=(id)=>{
+            fetch(`http://localhost:8090/Qytdele/${id}`,{
+                method:"DELETE"
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+               window.location.reload()
+            })
+        }
+        const CartData=(data)=>{
+            
+            data.map((ele)=>{;
+                let tr=document.createElement("tr")
+                let number=document.createElement("td")
+                number.innerHTML=Product_number++
+                let ImgTd=document.createElement("td")
+                ImgTd.setAttribute("class","ImgTd")
+                let Product_img=document.createElement("img")
+                Product_img.src=`http://localhost:8090/images/${ele.productId.images[0].images}`
+                ImgTd.append(Product_img)
+                let Product_name=document.createElement("td")
+                Product_name.innerHTML=ele.productId.title.substring(0,20)+'...'
+                let Product_price=document.createElement("td")
+                Product_price.innerHTML=ele.productId.price
+                let Quantity=document.createElement("td")
+                Quantity.setAttribute("class","Quantity")
+            
+               let qutcount=ele.qyt
+               let Qyt;
+                if(qutcount=="1"){
+                    let dele=document.createElement("i")
+                    dele.setAttribute("class","fa-solid fa-trash")
+                    dele.addEventListener("click",(e)=>QYTDEL(ele._id))
+                    Qyt=document.createElement("p")
+                    Qyt.innerHTML=ele.qyt
+                    let PlusBtn=document.createElement("i")
+                    PlusBtn.setAttribute("class","fa-solid fa-plus")
+                    PlusBtn.addEventListener("click",(e)=>QYTADD(ele._id,1))
+                    Quantity.append(dele,Qyt,PlusBtn)
+
+                }
+                else{
+                    let miun=document.createElement("i")
+                    miun.setAttribute("class","fa-solid fa-minus")
+                    miun.addEventListener("click",(e)=>QYTMINS(ele._id,-1))
+                    Qyt=document.createElement("p")
+                    Qyt.innerHTML=ele.qyt
+                    let PlusBtn=document.createElement("i")
+                    PlusBtn.setAttribute("class","fa-solid fa-plus")
+                    PlusBtn.addEventListener("click",(e)=>QYTADD(ele._id,1))
+                    Quantity.append(miun,Qyt,PlusBtn)
+                }
+
+                let Total_Price=document.createElement("td")
+                Total_Price.innerHTML=ele.qyt*ele.productId.price
+                tr.append(number,ImgTd,Product_name,Product_price,Quantity,Total_Price)
+                document.querySelector(".tbody").append(tr)
+        })
+       }
+
+        const cartA=()=>{
         fetch("http://localhost:8090/allCart",{
             method:"POST",
             headers:{'content-type':"application/json"},
@@ -17,7 +142,7 @@
         })
         .then((res)=>res.json())
         .then((data)=>{
-            console.log("cart",data);
+            CartData(data)
         })
     }
     cartA()

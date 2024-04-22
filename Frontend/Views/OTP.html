@@ -11,6 +11,18 @@
       @import url(../Css/style.css);
       /* MEDIA QUERY LINK */
       @import url(../Css/media.css);
+      .timer{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+      }
+
+      .time_text{
+        display: flex;
+        flex-wrap: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -64,14 +76,67 @@
               name="otp"
               placeholder="-"
             />
+            <div class="timer">
+              <a href="" class="Resend"><p>Resend</p></a>
+              <div class="time_text">00:<div class="timer_sec">59</div> </div>
+              
+          </div>
             <div class="ver">
               <input type="submit" id="verify" value="OTP verify" />
             </div>
-          </form>
+          </form> 
         </div>
       </div>
     </section>
     <script>
+//       const onConfirmRefresh = function (event) {
+//   event.preventDefault();
+//   alert("OTp")
+//   // return event.returnValue = "Are you sure you want to leave the page?";
+// }
+
+window.addEventListener("reload",(e)=>{
+e.preventDefault();
+});
+      const TimeCount=document.querySelector(".timer .timer_sec")
+      let counter;
+      
+      const startTimer=(time)=>{
+        counter=setInterval(timer,1000)
+        function timer() {
+          TimeCount.textContent=time 
+          time--;
+          if(time<9){
+          TimeCount.textContent=`0${time}`
+          }
+          if(time<=5){
+          TimeCount.style.color="red"
+          }
+          if(time<0){
+            clearInterval(counter)
+            counter=0
+            TimeCount.textContent="00"
+            document.querySelector(".time_text").style.color="red"
+          }
+        }
+}
+startTimer(59)
+
+let ResendOtpEmail=document.cookie.split(";")[0].split("=")[1]
+
+  document.querySelector(".Resend").addEventListener("click",(e)=>{
+    e.preventDefault()
+    fetch("http://localhost:8090/emailverify",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({email:ResendOtpEmail})
+    })
+    .then((res)=>res.json())
+    .then((data)=>{
+      console.log(data);
+    })
+  })
+
       document.getElementById("OTP").addEventListener("submit", (e) => {
         e.preventDefault();
         let data = [
@@ -83,19 +148,24 @@
           document.getElementById("input6").value,
         ];
 
-        fetch("http://localhost:8090/OTPverify", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({data:data}),
-        }).then((res)=>res.json())
-        .then((data)=>{
-          if(data.msg=="Otp Verify !"){
-            console.log("done");
-            window.location.href="/Frontend/Views/FrogetPassword.html"
-          }else{
-            console.log("Not");
-          }
-        })
+        if(counter==1){
+          fetch("http://localhost:8090/OTPverify", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({data:data}),
+          }).then((res)=>res.json())
+          .then((data)=>{
+            if(data.msg=="Otp Verify !"){
+              console.log("done");
+              window.location.href="/Frontend/Views/FrogetPassword.html"
+            }else{
+              console.log("Not");
+            }
+          })
+        }
+        else{
+          alert("Time Over OTP Match.")
+        }
       });
     </script>
   </body>

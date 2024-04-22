@@ -139,8 +139,6 @@
     })
         const display=(data)=>{
             data.map((ele)=>{
-
-                console.log(ele);
                 let responsive=document.createElement("div")
                 responsive.setAttribute("class","col-xl-3")
                 let product_box=document.createElement("div")
@@ -150,7 +148,7 @@
                 let imgdiv=document.createElement('div')
                 imgdiv.setAttribute("class","img")
                 let mainimg=document.createElement("img")
-                mainimg.src=  `http://localhost:8090/images/${ele.images[0].images}`   
+                mainimg.src= `http://localhost:8090/images/${ele.images[0].images}`   
                 mainimg.alt="Image"
                 imgdiv.append(mainimg)
                 let content=document.createElement("div")
@@ -166,7 +164,6 @@
                 rating.setAttribute("class","ratingicon")
                 let count=0,sum=0;
                 for(let i=0;i<ele.rating.length;i++){
-                    console.log("ele",ele.rating[i].value);
                     sum+=ele.rating[i].value;
                     count++;
                 }
@@ -191,6 +188,8 @@
                 document.querySelector("#append").append(responsive)
             })
         }
+        let token=document.cookie.split(";")[4].split("=")[1]
+
         const get=()=>{
             fetch('http://localhost:8090/AllProduct')
             .then((res)=>res.json())
@@ -199,6 +198,14 @@
             })
         }
         get()
-    </script>
+        const user=()=>{
+            fetch('http://localhost:8090/AllProduct',{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({token})
+            })
+        }
+        user()
+</script>
 </body>
 </html>

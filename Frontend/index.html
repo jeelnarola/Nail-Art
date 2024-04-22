@@ -157,9 +157,8 @@
                     </div>
                     <div class="profile_aside">
                         <ul>
-                            <li></li>
-                            <a href="Views/cart.html"><li>cart</li></a>
-                            <a href=""><li>MyOrder</li></a>
+                            <a href="Views/cart.html" class="cart"><li>cart <h6 class="CartTotalProduct"></h6></li></a>
+                            <a href="Views/Myorder.html"><li>MyOrder</li></a>
                             <a href=""  > <li class="pass">Cheng password</li></a>
                             <a href=""><li id="Logout">Logout</li></a>
                         </ul>
@@ -436,7 +435,10 @@
 
 
 let stro=(localStorage.getItem("EmailUser"))
-let cookie=document.cookie
+let UserID=document.cookie.split(";")[1].split("=")[1]
+let CartTotalProduc=(localStorage.getItem("CartTotalProduct"))
+console.log(UserID);
+document.querySelector(".CartTotalProduct").innerHTML=CartTotalProduc
     if(stro){
         document.querySelector(".user_profile").style.display="block"
 
@@ -556,6 +558,22 @@ let cookie=document.cookie
         e.preventDefault()
         document.querySelector(".Login").style.display="block"
     })
+    const cartA=()=>{
+        fetch("http://localhost:8090/allCart",{
+            method:"POST",
+            headers:{'content-type':"application/json"},
+            body:JSON.stringify({userId:UserID})
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+           let CartTotalProduct=localStorage.setItem("CartTotalProduct",data.length)
+        })
+    }
+    if(UserID){
+        cartA()
+    }
+    
+   
 
 </script>
 

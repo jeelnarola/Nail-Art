@@ -1,6 +1,7 @@
 const multer = require("multer");
 const productModel = require("../Models/Product.Schema");
 const pathh=require('path')
+const jwt=require("jsonwebtoken")
 const Rezorpay=require("razorpay")
 
 
@@ -8,7 +9,7 @@ const now =new Date()
 const year=now.getFullYear();
 const month=String(now.getMonth()+1).padStart(2,'0');
 const day=String(now.getDate()).padStart(2,'0')
-
+let keyid='rzp_test_pitzHVt1lZC3UZ'
 
 let store = multer.diskStorage({
   destination: "Images",
@@ -41,8 +42,10 @@ const productAdd = async (req, res) => {
 
 const AllProduct=async(req,res)=>{
   let data=await productModel.find()
+  let {token}=req.body
   res.send(data)
 }
+
 
 
 const singlePage=async(req,res)=>{
@@ -67,10 +70,20 @@ const pay=(req,res)=>{
     if(err){
       res.send(err)
     }else{
-      res.send(order)
+      let data={
+        success:true,
+        msg:"order create",
+        order_id:order.id,
+        key_id:keyid,
+        name:"jeel",
+        amount:option.amount
+      }
+      res.json(data)
     }
   })
 }
+
+
 
 
 module.exports = { productAdd, Upload ,AllProduct,singlePage,review,pay};

@@ -28,6 +28,8 @@ app.use(cart)
 const path=()=>{
   return __dirname;
 }
+
+
 module.exports=path
 app.listen(process.env.PORT, () => {
   console.log(`Server Start ${process.env.PORT}`);

@@ -105,52 +105,174 @@
             </div>
         </div>
     </section>
-    <section class="address">
-        <div class="container">
-            <div class="col-xl-6">
-                <form action="">
-                    <div class="information-box">
-                        <h2>contact information</h2>
-                        <input type="text" placeholder="Email"><br>
-                        <input type="number" placeholder="Mobile Number">
-                    </div>
-                    <div class="shipping-box">
-                        <h2>shipping Address</h2>
-                        <div class="shipping-name">
-                            <input type="text" name="first" id="first">
-                            <input type="text" name="last" id="last">
+    <section class="overly">
+        <div class="address">
+            <i class="fa-solid fa-xmark"></i>
+            <div class="container">
+                <div class="col-xl-6">
+                    <form action="" id="pay">
+                        <div class="box">
+                            <div class="information-box">
+                                <h2>contact information</h2>
+                                <input type="text" name="Email" id="Email" placeholder="Email"><br>
+                                <input type="number" name="phone" id="phone" placeholder="Mobile Number">
+                            </div>
+                            <div class="shipping-box">
+                                <h2>shipping Address</h2>
+                                <div class="shipping-name">
+                                    <input type="text" name="first" id="first" placeholder="First Name">
+                                    <input type="text" name="last" id="last" placeholder="Last Name">
+                                </div>
+                                <div class="shipping-stree">
+                                    <input type="text" name="address" id="address_tex" placeholder="apartment,suite, etc..">
+                                </div>
+                                <div class="shipping-city">
+                                    <input type="text" name="city" id="city" placeholder="City">
+                                    <input type="text" name="Zipcode" id="zipcode" placeholder="Zipcode">
+                                </div>
+                                <div class="shipping-state">
+                                    <input type="text" name="state" id="state" placeholder="State">
+                                    <select name="country" id="country" >
+                                        <option value="">country select</option>
+                                        <option value="india">india</option>
+                                    </select>
+                                </div>
+                                <button class="AddressNextBtn">Address Submit Or Next</button>
+                                
+                            </div>
                         </div>
-                        <div class="shipping-stree">
-                            <input type="text" name="stree" id="stree">
+                        <div class="pay_product">
+                            <div class="row">
+                                <label for="">Product Name <span class="P_span">:</span> </label>
+                                <input type="text" name="Product_name" class="Product_name" placeholder="">
+                            </div>
+                            <div class="row">
+                                <label for="">Product Category <span>:</span> </label>
+                                <input type="text" name="Product_Category" class="Product_Category" placeholder="">
+                            </div>
+                            <div class="row">
+                                <label for="">Product Quantity <span>:</span> </label>
+                                <input type="text" name="product_Quantity" class="product_Quantity" placeholder="">
+                            </div>
+                            <div class="row">
+                                <label for="">Product Price <span class="price_span">:</span> </label>
+                                <input type="text" name="product_price" class="product_price" placeholder="">
+                            </div>
+                            <div class="row">
+                                <label for="">Total Price <span class="total_span">:</span> </label>
+                                <input type="text" name="total_price" class="total_price" placeholder="">
+                            </div>        
                         </div>
-                        <div class="shipping-city">
-                            <input type="text" name="city" id="city">
-                        </div>
-                        <div class="shipping-state">
-                            <input type="text" name="state" id="state">
-                        </div>
-                        <div class="shipping-country">
-                            <select name="country" id="country" >
-                                <option value="">country select</option>
-                                <option value="india">india</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+                        <button type="submit" class="Pay">Pay Now</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
+        let productId;
+        let addressID;
+        let userId=document.cookie.split(";")[3].split("=")[1]
+        console.log("v",userId);
+        document.querySelector(".fa-xmark").addEventListener("click",(e)=>{
+            e.preventDefault()
+            document.querySelector(".overly").style.display="none"
+        })
+      
+
+
+
+        const nextbtn=(item,qyt)=>{
+            document.querySelector(".AddressNextBtn").addEventListener("click",(e)=>{
+            e.preventDefault()
+            let obj={
+                UserId:userId,
+                Email:document.querySelector("#Email").value,
+                phone:document.querySelector("#phone").value,
+                first:document.querySelector("#first").value,
+                last:document.querySelector("#last").value,
+                address:document.querySelector("#address_tex").value,
+                city:document.querySelector("#city").value,
+                Zipcode:document.querySelector("#zipcode").value,
+                state:document.querySelector("#state").value,
+                country:document.querySelector("#country").value
+            }
+
+            fetch("http://localhost:8090/address",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify(obj)
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                console.log(data);
+                addressID=data.data._id
+            document.querySelector(".pay_product").style.display="block"
+            document.querySelector(".Pay").style.display="block"
+            document.querySelector(".box").style.display="none"
+            document.querySelector(".Product_name").value=(item[0].title).substring(0,25)+"..."
+            document.querySelector(".Product_Category").value=(item[0].category).substring(0,25)
+            document.querySelector(".product_Quantity").value=qyt
+            document.querySelector(".product_price").value=item[0].price
+            document.querySelector(".total_price").value=item[0].price*qyt
+  
+            })
+            })
+        }
+        document.querySelector("#pay").addEventListener("submit",(e)=>{
+            e.preventDefault()
+            
+            let amount=document.querySelector(".total_price").value
+    
+       fetch("http://localhost:8090/pay",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({amount:amount}),
+        })
+        .then((res)=>res.json())
+        .then((data)=>{
+            console.log(data);
+           if(data.success){
+                let option={
+                    "key_id":data.key_id,
+                    "amount":data.amount,
+                    "order_id":data.order_id,
+                    "name":data.name,
+                    "handler":function(data){
+                        alert("Payment successfully...")
+                        let order={
+                            ProductID:productId,
+                            UserID:userId,
+                            AddressID:addressID,
+                            payment:true,
+                            qyt:1
+                        }
+                        fetch("http://localhost:8090/order",{
+                            method:"POST",
+                            headers:{"content-type":"application/json"},
+                            body:JSON.stringify(order)
+                        })
+                    }
+                }
+                let razorpay=new Razorpay(option)
+                razorpay.on('payment.failed',()=>{
+                    alert("payment.failed")
+                })
+            razorpay.open()
+            }
+       
+        })
+   
+    })
        let stor= localStorage.getItem("SinglePageID")
        let allstr=document.querySelectorAll(".ratings .star")
        let ratinginput=document.querySelector(".ratings input")
        let reviewstor;
 
        let userName=document.cookie.split(";")[0].split("=")[1].split("@")[0]
-       console.log("ss",userName);
-       let UserID=document.cookie.split(";")[2].split("=")[1]
+    //    let UserID=document.cookie.split(";")[1].split("=")[1]
        document.querySelector(".ratingbtn").addEventListener("click",(e)=>{
         e.preventDefault()
         document.getElementById("ratingform").style.display="block"
@@ -168,7 +290,6 @@
        allstr.forEach((item,idx)=>{
            item.addEventListener("click",function(){
             reviewstor=ratinginput.value=idx+1;
-            console.log(reviewstor)
             allstr.forEach(i=>{
                 i.classList.replace("fa-solid","fa-regular")
                 i.classList.remove("activ")
@@ -183,11 +304,16 @@
         })
        });
 
+       const address=(data,qyt)=>{
+           document.querySelector(".overly").style.display="block"
+           nextbtn(data,qyt)
+       }
+
        const cart=(id)=>{
 
         let obj={
             productId:id,
-            userId:UserID
+            userId:userId
         }
         fetch("http://localhost:8090/cart",{
             method:"POST",
@@ -198,28 +324,15 @@
         .then((data)=>{
             if(data.msg=="already add product"){
                 alert("already add product")
+                window.location.reload()
             }else{
                 alert("Add To Cart product")
-
+                window.location.reload()
             }
         })
        }
 
-       const pay=async(amount)=>{
-        let res=await fetch("http://localhost:8090/pay",{
-            method:"POST",
-            headers:{"content-type":"application/json"},
-            body:JSON.stringify({amount:amount})
-        })
-        let order=await res.json()
-        console.log(order);
-        let option={
-            key:"rzp_test_pitzHVt1lZC3UZ",
-            amount:order.amount
-        }
-        let razorpay=new Razorpay(option)
-        razorpay.open()
-       }
+      
        const SingleProductDisplay=(data)=>{
         data.map((ele)=>{
             console.log(ele);
@@ -280,7 +393,7 @@
             sub_img3.src=`http://localhost:8090/images/${ele.images[3].images}`
             sub_img3.addEventListener("click",(e)=>{
                 let stor=document.querySelector(".mainImg").src
-                console.log(stor);
+            
                 if(stor){
                     document.querySelector(".mainImg").src=`http://localhost:8090/images/${ele.images[3].images}`
                     document.querySelector(".sub_img3").src=`http://localhost:8090/images/${ele.images[0].images}`
@@ -347,9 +460,9 @@
             addToCart.innerHTML='ADD TO CART'
             addToCart.addEventListener("click",(e)=>{
                 e.preventDefault()
-                console.log("user",document.cookie.User);
         
                     if(userName){
+                        // product  Id=ele._id
                     cart(ele._id)
                     }else{
                         alert("login || Signup")
@@ -361,12 +474,9 @@
             buy.innerHTML='BUY NOW'
             buy.addEventListener("click",(e)=>{
                 e.preventDefault()
-        
-                if(userName){
-                    pay(ele.price)
-                }else{
-                    alert("login || Signup")
-                }
+                address(data,1)
+                productId=ele._id
+                console.log("ProductID",productId);
             })
             btn.append(addToCart,buy)
 
@@ -474,8 +584,9 @@
     }
     get()
 
-   
-    // cartA()
+    
+
+
     // reviewData()
     </script>
 </body>

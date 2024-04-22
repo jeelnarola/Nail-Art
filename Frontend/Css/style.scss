@@ -89,9 +89,9 @@ a{
 .col-xl-12{
     padding: 10px;   
 }
-::-webkit-scrollbar{
-    width: 12px;
-}
+// ::-webkit-scrollbar{
+//     width: 12px;
+// }
 ::-webkit-scrollbar-track{
     background-color: rgb(88, 86, 86);
 }
@@ -99,9 +99,9 @@ a{
     background: linear-gradient(transparent,#30ff00);
     border-radius: 16px;
 }
-::-webkit-scrollbar-thumb:hover{
-    background: linear-gradient(transparent,#00c6ff);
-}
+// ::-webkit-scrollbar-thumb:hover{
+//     background: linear-gradient(transparent,#00c6ff);
+// }
     .col-xs-1{width: 8.333%;}
     .col-xs-2{width: 16.666%;}
     .col-xs-3{width: 25%;}
@@ -923,7 +923,7 @@ header{
             width: 50px;
             height: 50px;
             text-align: center;
-            margin: 20px 0px;
+            margin-top: 20px;
             margin-left:5px;
         }
         ::placeholder{
@@ -949,6 +949,20 @@ header{
                     background-color:#f4e2c1 ;
                 }
             }
+        }
+        .timer{
+            margin-top: 10px;
+            font-size: 15px;
+            a{
+                &:focus{
+                    color: red;
+                }
+                p{
+
+                    font-size: 15px;
+                }
+            }
+           
         }
     }
 }
@@ -1529,24 +1543,42 @@ header{
         left: 0px;
         width: 150px;
         height: 0px;
-       
         border-radius: 30px;
         visibility: hidden;
+        overflow: hidden;
         ul{
             visibility: hidden;
             a{
                 li{
                     padding: 5px 10px;
+                
                     background-color: transparent;
                     backdrop-filter: blur(10px);
                     margin: 2px 0px;
                     transition: all 0.3s;
                     color: black;
+                    overflow: hidden;
                     &:hover{
                         cursor: pointer;
                         padding-left: 20px;
                         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-                        background-color: #FDF5E6;
+                    }
+                }
+            }
+            .cart{
+                // display: inline-block;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                li{
+                    h6{
+                        display: inline;
+                        padding-right: 65px;
+                        padding-left: 10px;
+                        // margin-left: 10px;
+                        font-size: 18px;
+                        color: #00c6ff;
+                        overflow: hidden;
                     }
                 }
             }
@@ -1566,9 +1598,253 @@ header{
             left: 0px;
             width: 150px;
             height: auto;
+            overflow: hidden;
         }
         ul{
             visibility: visible;
+        }
+    }
+}
+
+.cart{
+    table{
+        border: 1px solid black;
+        padding: 5px;
+        thead{
+            background-color: cadetblue;
+            th{
+                padding: 5px 20px;
+                border: 1px solid black;
+                font-size: 14px;
+                span{
+                    display: block  ;
+            
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    border: 1px solid black;
+                    padding: 0px 0px 0px 5px;
+                }
+                .ImgTd{
+                    width: 70px;
+                    height: 70px;
+                    object-fit: contain;
+                    img{
+                        padding: 5px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .Quantity{
+                    display: flex;
+                    flex-wrap: nowrap;
+                    align-items: center;
+                    justify-content: space-around;
+                    padding: 25px 0px;
+                    .fa-minus,.fa-trash,.fa-plus{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+.overly{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.358);
+    position: fixed;
+    top: 0px;
+    display: none;
+    .address{
+       width: 400px;
+       height: auto;
+       background-color: #fff;
+       padding: 20px;
+       position: absolute;
+       top: 50px;
+       left: 0px;
+       right: 0px;
+       margin: auto;
+       form{
+        width: 100%;
+        .information-box,.shipping-box{
+            width: 300px;
+            text-transform: capitalize;
+            h2{
+                padding: 5px 0px;
+                font-weight: 500;
+                display:inline-block;
+                font-size: 20px;
+            }
+            input{
+                width: 100%;
+                padding: 8px;
+                margin: 5px;
+            }
+        }
+        .shipping-name,.shipping-city,.shipping-state{
+            display: flex;
+            flex-wrap: nowrap;
+            input{
+                width: 50%;
+                margin: 5px
+            }
+            select{
+                width: 50%;
+                padding: 10px;
+                margin: 5px;
+            }
+        }
+        button{
+            display: block;
+            margin: 10px;
+            padding: 10px 30px;
+            background-color: #00c6ff;
+            border: 1px solid #00c6ff;
+            cursor: pointer;
+            &:hover{
+                transition: all 0.2s;
+                background-color: #1dbaee;
+                color: white;
+            }
+        }
+        .pay_product{
+            display: none;
+            width: 600px;
+            user-select: none;
+            pointer-events: none;
+            label,input{
+                margin: 5px;
+            }
+            span{
+                margin: 0px 12px;
+                font-weight: 700;
+            }
+            .P_span{
+                margin-left: 30px;
+            }
+            .price_span{
+                margin-left: 37px;
+            }
+            .total_span{
+                margin-left: 57px;
+            }
+        }
+        .Pay{
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+            cursor: pointer;
+        }
+       }
+       .fa-xmark{
+        cursor: pointer;
+       } 
+    }
+}
+.bottom_border{
+    border-bottom: 2px solid black;
+}
+
+.Myorder{
+    // overflow: scroll;
+    width: 60%;
+    .Order_filter{
+        width: 100%;
+        // height: 100px;
+        margin: 20px;
+        h6{
+            font-size: 15px;
+            margin: 0px 10px;
+            text-transform: capitalize;
+            cursor: pointer;
+            display: inline;
+        }
+    }
+    .padding-order{
+        
+        table{
+            // padding: 20px 40px;
+            border: 1px solid black;
+            thead{
+                th{
+                    padding: 15px 20px;
+                    border: 1px solid black;
+                    text-align: center;
+                }
+                .action{
+                    padding: 30px;
+                    display: none;
+                }
+                .payment{
+                    padding: 30px;
+                    display: none;
+                }
+            }
+            .tbody{
+                tr{
+                    td{
+                        padding: 5px 10px;
+                        border: 1px solid black;
+                        .Myorder_img{
+                            width: 50px;
+                            height: 50px;
+                            text-align: center;
+                            margin: auto;
+                        }
+                    }
+                    .contectTd{
+                        td{
+                            padding: 5px;
+                            margin: 5px;
+                            // color: #00c6ff;
+                            display: block;
+                        }
+                    }
+                    .address{
+                        width: 200px;
+                    }
+                    .orderStatus{
+                        text-align: center;
+                        color: orange;
+                    }
+                    .paymentTD{
+                        color: green;
+                    }
+                    
+                    .actionbtn{
+                        display: flex;
+                        flex-wrap: nowrap;;
+                        padding: 40px 0px;
+                        button{
+                            padding: 5px 10px;
+                            margin: 0px 5px;
+                            text-transform: capitalize;
+                            cursor: pointer;
+                        }
+                        .rejectbtn{
+                            background-color: red;
+                            color: white;
+                            border: 1px solid red;
+                            &:hover{
+                            background-color: rgb(244, 84, 84);
+                            }
+                        }
+                        .accept{
+                            background-color: #30ff00;
+                            border: 1px solid black;
+                            &:hover{
+                            background-color: #31e609;
+                            // color: white;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

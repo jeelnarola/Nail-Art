@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Order</title>
+   <style>
+    @import url(../Css/all.min.css);
+    @import url(../Css/style.css);
+    @import url(../Css/media.css);
+   </style>
+</head>
+<body>
+
+    <div class="Myorder">
+        <div class="container">
+            <div class="Order_filter">
+                <div class="row">
+                    <h6 class="bottom_border" id="pending">pending Order</h6>
+                    <h6 id="accept">accept Order</h6>
+                </div>
+            </div>
+           <div class="row">
+            <div class="col-xl-12">
+                <div class="padding-order">
+                    <table>
+                        <thead>
+                            <th>Product <span>image</span></th>
+                            <th>Product<span>Name</span></th>
+                            <th>Product<span>Quantity</span></th>
+                            <th>category</th>
+                            <th>contect</th>
+                            <th>address</th>
+                            <!-- <th>Pincode</th>   -->
+                            <th>status</th>
+                            <th class="payment" id="paymentTH">payment</th>
+                            <th class="action" id="actionTH">action</th>
+                            
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xl-12"></div>
+           </div>
+        </div>
+    </div>
+    
+    <script>
+    let UserID=document.cookie.split(";")[3].split("=")[1]
+    let role=document.cookie.split(";")[4].split("=")[1]
+    let payment=document.querySelector("#paymentTH")
+    let action=document.querySelector("#actionTH")
+    if(role=="admin"){
+        payment.classList.remove("payment")
+        action.classList.remove("action")
+    }
+
+    if(role=="user"){
+        payment.classList.add("payment")
+        action.classList.add("action")
+    }
+
+    const acceptButton=(data)=>{
+
+        let obj={
+            id:data._id,
+            orderStatus:data.orderStatus
+        }
+        fetch("http://localhost:8090/acceptOrder",{
+            method:"PATCH",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify(obj)
+        })
+    }
+
+    const rejectButton=(data)=>{
+        fetch(`http://localhost:8090/rejectOrder/${data._id}`,{
+            method:"DELETE"
+        })
+    }
+    const PandingOrder=(data)=>{
+        
+        document.querySelector(".tbody").innerHTML=" "
+        data.map((ele)=>{
+            console.log(ele);
+            let tr=document.createElement("tr")
+            let imageTD=document.createElement("td")
+            let image=document.createElement("img")
+            image.setAttribute("class","Myorder_img")
+            image.src=`http://localhost:8090/images/${ele.ProductID.images[0].images}`
+
+            let product_name=document.createElement("td")
+            product_name.innerHTML=ele.ProductID.title.substring(0,15)+"..."
+            let quantity=document.createElement("td")
+            quantity.innerHTML=ele.qyt
+            let product_category=document.createElement("td")
+            product_category.innerHTML=ele.ProductID.category.substring(0,15)+"..."
+
+            let contectTd=document.createElement("td")
+            contectTd.setAttribute("class","contectTd")
+            let email=document.createElement("td")
+            email.innerHTML=ele.AddressID.Email
+            let phone=document.createElement("td")
+            phone.innerHTML=ele.AddressID.phone
+            contectTd.append(email,phone)
+
+            let address=document.createElement("td")
+            address.setAttribute("class","address")
+            address.innerHTML=ele.AddressID.address+ele.AddressID.city+","+ele.AddressID.state+","+ele.AddressID.country.substring(0,20)+"..."
+
+            let orderStatus=document.createElement("td")
+            orderStatus.setAttribute("class","orderStatus")
+            orderStatus.innerHTML=ele.orderStatus.substring(0,7)+"..."
+
+            let payment=document.createElement("td")
+            payment.setAttribute("class","paymentTD")
+            payment.innerHTML=ele.payment
+
+            if(role!=="admin" || ele.orderStatus=="accept"){
+            tr.append(imageTD,product_name,quantity,product_category,contectTd,address,orderStatus)  
+            }
+            else{
+            let action=document.createElement("td")
+            action.setAttribute("Class","actionbtn")
+            
+            let reject=document.createElement("button")
+            reject.setAttribute("class","rejectbtn")
+            reject.innerHTML="reject"
+            reject.addEventListener("click",(e)=>{
+                e.preventDefault()
+                rejectButton(ele)
+            })
+            let accept=document.createElement("button")
+            accept.setAttribute("class","accept")
+            accept.addEventListener("click",(e)=>{
+                acceptButton(ele)
+            })
+            accept.innerHTML="accept"
+            action.append(reject,accept)
+            tr.append(imageTD,product_name,quantity,product_category,contectTd,address,orderStatus,payment,action)
+            }
+
+            
+
+            imageTD.append(image)
+            document.querySelector(".tbody").append(tr)
+        })
+    }
+    const get=()=>{
+
+        fetch("http://localhost:8090/Myorder",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({UserID})
+        })
+            .then((res)=>res.json())
+            .then((data)=>{
+                let arr=[]
+                for(let i=0;i<data.length;i++){
+                    if(data[i].orderStatus=="pending")
+                    arr.push(data[i])
+                }
+                PandingOrder(arr)
+            })
+    }
+
+        document.getElementById("accept").addEventListener("click",(e)=>{
+            e.preventDefault()
+            let accept=document.getElementById("accept")
+            let pending=document.getElementById("pending")
+            accept.classList.add("bottom_border")
+            pending.classList.remove("bottom_border")
+            fetch("http://localhost:8090/Myorder",{
+                method:"POST",
+                headers:{"content-type":"application/json"},
+                body:JSON.stringify({UserID})
+        })
+            .then((res)=>res.json())
+            .then((data)=>{
+                let arr=[]
+                for(let i=0;i<data.length;i++){
+                    if(data[i].orderStatus=="accept")
+                    arr.push(data[i])
+                }
+                payment.classList.add("payment")
+                action.classList.add("action")
+                PandingOrder(arr)
+            })
+        })
+
+        document.getElementById("pending").addEventListener("click",(e)=>{
+            e.preventDefault()
+            let accept=document.getElementById("accept")
+            let pending=document.getElementById("pending")
+            accept.classList.remove("bottom_border")
+            pending.classList.add("bottom_border")
+            get()
+        })
+
+        const allOrder=async()=>{
+            fetch("http://localhost:8090/allOrder")
+            .then((res)=>res.json())
+            .then((data)=>{
+                let arr=[]
+                for(let i=0;i<data.length;i++){
+                    if(data[i].orderStatus=="pending")
+                    arr.push(data[i])
+                }
+                payment.classList.remove("payment")
+            action.classList.remove("action")
+                PandingOrder(arr)
+            })
+        }
+
+        if(role=="user"){
+            get()
+        }
+        if(role=="admin"){
+            allOrder()
+            document.getElementById("accept").addEventListener("click",(e)=>{
+            e.preventDefault()
+            let accept=document.getElementById("accept")
+            let pending=document.getElementById("pending")
+            accept.classList.add("bottom_border")
+            pending.classList.remove("bottom_border")
+            fetch("http://localhost:8090/allOrder")
+            .then((res)=>res.json())
+            .then((data)=>{
+                let arr=[]
+                for(let i=0;i<data.length;i++){
+                    if(data[i].orderStatus=="accept")
+                    arr.push(data[i])
+                }
+                PandingOrder(arr)
+            })
+        })
+        document.getElementById("pending").addEventListener("click",(e)=>{
+            e.preventDefault()
+            let accept=document.getElementById("accept")
+            let pending=document.getElementById("pending")
+            accept.classList.remove("bottom_border")
+            pending.classList.add("bottom_border")
+            allOrder()
+        })
+
+
+        }
+
+
+    </script>
+    
+</body>
+</html>

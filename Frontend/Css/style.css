@@ -98,10 +98,6 @@ a {
   padding: 10px;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-}
-
 ::-webkit-scrollbar-track {
   background-color: rgb(88, 86, 86);
 }
@@ -109,10 +105,6 @@ a {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(transparent, #30ff00);
   border-radius: 16px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(transparent, #00c6ff);
 }
 
 .col-xs-1 {
@@ -858,7 +850,7 @@ header .header-menu .menu-icon #H-xmark {
   width: 50px;
   height: 50px;
   text-align: center;
-  margin: 20px 0px;
+  margin-top: 20px;
   margin-left: 5px;
 }
 .otp .otp-div ::-moz-placeholder {
@@ -886,6 +878,16 @@ header .header-menu .menu-icon #H-xmark {
 .otp .otp-div .ver input:hover {
   letter-spacing: 5px;
   background-color: #f4e2c1;
+}
+.otp .otp-div .timer {
+  margin-top: 10px;
+  font-size: 15px;
+}
+.otp .otp-div .timer a:focus {
+  color: red;
+}
+.otp .otp-div .timer a p {
+  font-size: 15px;
 }
 
 .Email-Verify {
@@ -1426,6 +1428,7 @@ header .header-menu .menu-icon #H-xmark {
   height: 0px;
   border-radius: 30px;
   visibility: hidden;
+  overflow: hidden;
 }
 .user_profile .profile_aside ul {
   visibility: hidden;
@@ -1438,12 +1441,25 @@ header .header-menu .menu-icon #H-xmark {
   margin: 2px 0px;
   transition: all 0.3s;
   color: black;
+  overflow: hidden;
 }
 .user_profile .profile_aside ul a li:hover {
   cursor: pointer;
   padding-left: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  background-color: #FDF5E6;
+}
+.user_profile .profile_aside ul .cart {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.user_profile .profile_aside ul .cart li h6 {
+  display: inline;
+  padding-right: 65px;
+  padding-left: 10px;
+  font-size: 18px;
+  color: #00c6ff;
+  overflow: hidden;
 }
 .user_profile .profile_aside ul #Logout {
   border-top: 1px solid black;
@@ -1456,7 +1472,232 @@ header .header-menu .menu-icon #H-xmark {
   left: 0px;
   width: 150px;
   height: auto;
+  overflow: hidden;
 }
 .user_profile:hover ul {
   visibility: visible;
+}
+
+.cart table {
+  border: 1px solid black;
+  padding: 5px;
+}
+.cart table thead {
+  background-color: cadetblue;
+}
+.cart table thead th {
+  padding: 5px 20px;
+  border: 1px solid black;
+  font-size: 14px;
+}
+.cart table thead th span {
+  display: block;
+}
+.cart table tbody tr td {
+  border: 1px solid black;
+  padding: 0px 0px 0px 5px;
+}
+.cart table tbody tr .ImgTd {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.cart table tbody tr .ImgTd img {
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+.cart table tbody tr .Quantity {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px 0px;
+}
+.cart table tbody tr .Quantity .fa-minus, .cart table tbody tr .Quantity .fa-trash, .cart table tbody tr .Quantity .fa-plus {
+  cursor: pointer;
+}
+
+.overly {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.358);
+  position: fixed;
+  top: 0px;
+  display: none;
+}
+.overly .address {
+  width: 400px;
+  height: auto;
+  background-color: #fff;
+  padding: 20px;
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+.overly .address form {
+  width: 100%;
+}
+.overly .address form .information-box, .overly .address form .shipping-box {
+  width: 300px;
+  text-transform: capitalize;
+}
+.overly .address form .information-box h2, .overly .address form .shipping-box h2 {
+  padding: 5px 0px;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 20px;
+}
+.overly .address form .information-box input, .overly .address form .shipping-box input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px;
+}
+.overly .address form .shipping-name, .overly .address form .shipping-city, .overly .address form .shipping-state {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.overly .address form .shipping-name input, .overly .address form .shipping-city input, .overly .address form .shipping-state input {
+  width: 50%;
+  margin: 5px;
+}
+.overly .address form .shipping-name select, .overly .address form .shipping-city select, .overly .address form .shipping-state select {
+  width: 50%;
+  padding: 10px;
+  margin: 5px;
+}
+.overly .address form button {
+  display: block;
+  margin: 10px;
+  padding: 10px 30px;
+  background-color: #00c6ff;
+  border: 1px solid #00c6ff;
+  cursor: pointer;
+}
+.overly .address form button:hover {
+  transition: all 0.2s;
+  background-color: #1dbaee;
+  color: white;
+}
+.overly .address form .pay_product {
+  display: none;
+  width: 600px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+.overly .address form .pay_product label, .overly .address form .pay_product input {
+  margin: 5px;
+}
+.overly .address form .pay_product span {
+  margin: 0px 12px;
+  font-weight: 700;
+}
+.overly .address form .pay_product .P_span {
+  margin-left: 30px;
+}
+.overly .address form .pay_product .price_span {
+  margin-left: 37px;
+}
+.overly .address form .pay_product .total_span {
+  margin-left: 57px;
+}
+.overly .address form .Pay {
+  padding: 10px;
+  margin-top: 20px;
+  display: none;
+  cursor: pointer;
+}
+.overly .address .fa-xmark {
+  cursor: pointer;
+}
+
+.bottom_border {
+  border-bottom: 2px solid black;
+}
+
+.Myorder {
+  width: 60%;
+}
+.Myorder .Order_filter {
+  width: 100%;
+  margin: 20px;
+}
+.Myorder .Order_filter h6 {
+  font-size: 15px;
+  margin: 0px 10px;
+  text-transform: capitalize;
+  cursor: pointer;
+  display: inline;
+}
+.Myorder .padding-order table {
+  border: 1px solid black;
+}
+.Myorder .padding-order table thead th {
+  padding: 15px 20px;
+  border: 1px solid black;
+  text-align: center;
+}
+.Myorder .padding-order table thead .action {
+  padding: 30px;
+  display: none;
+}
+.Myorder .padding-order table thead .payment {
+  padding: 30px;
+  display: none;
+}
+.Myorder .padding-order table .tbody tr td {
+  padding: 5px 10px;
+  border: 1px solid black;
+}
+.Myorder .padding-order table .tbody tr td .Myorder_img {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin: auto;
+}
+.Myorder .padding-order table .tbody tr .contectTd td {
+  padding: 5px;
+  margin: 5px;
+  display: block;
+}
+.Myorder .padding-order table .tbody tr .address {
+  width: 200px;
+}
+.Myorder .padding-order table .tbody tr .orderStatus {
+  text-align: center;
+  color: orange;
+}
+.Myorder .padding-order table .tbody tr .paymentTD {
+  color: green;
+}
+.Myorder .padding-order table .tbody tr .actionbtn {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 40px 0px;
+}
+.Myorder .padding-order table .tbody tr .actionbtn button {
+  padding: 5px 10px;
+  margin: 0px 5px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.Myorder .padding-order table .tbody tr .actionbtn .rejectbtn {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
+.Myorder .padding-order table .tbody tr .actionbtn .rejectbtn:hover {
+  background-color: rgb(244, 84, 84);
+}
+.Myorder .padding-order table .tbody tr .actionbtn .accept {
+  background-color: #30ff00;
+  border: 1px solid black;
+}
+.Myorder .padding-order table .tbody tr .actionbtn .accept:hover {
+  background-color: #31e609;
 }/*# sourceMappingURL=style.css.map */
